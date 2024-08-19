@@ -1,14 +1,13 @@
-import {connect} from "mongoose"
+import { connect } from "mongoose"
 import constants from "src/constants"
 
 const providers = [
     {
         provide: constants.db_connection,
-        useFactory: async () => {
-            return await connect(process.env.DATABASE_URL, {
-                autoCreate: true,
-            })
-        }
+        useFactory: async () => await connect(
+            process.env[constants.database_url],
+            { autoCreate: true }
+        )
     },
 ]
 

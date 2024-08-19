@@ -1,21 +1,25 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-
-const PORT = process.env.PORT;
-const HOST = process.env.HOST;
-const NODE_ENV = process.env.NODE_ENV;
-const CORS_ORIGIN = process.env.CORS_ORIGIN;
+import { Logger } from '@nestjs/common';
+import constants from './constants';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule, {
-    cors: NODE_ENV === 'development' || {
-      origin: CORS_ORIGIN,
-      methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS', 'HEAD'],
-    },
+  // Load environment variables
+  const PORT = process.env[constants.port];
+  const HOST = process.env[constants.host];
+  const CORS_ORIGIN = process.env[constants.origin];
+
+  // Create the NestJS application and enable CORS
+  const app = await NestFactory.create(AppModule);
+  app.enableCors({
+    origin: CORS_ORIGIN,
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+    credentials: true,
   });
 
+  // Start the application
   await app.listen(PORT);
-  console.info(`Server is running on http://${HOST}:${PORT}`);
+  new Logger('Bootstrap').log(`Server is running on http://${HOST}:${PORT}`);
 }
 
 // Entry point of the application
