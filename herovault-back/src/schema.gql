@@ -1,0 +1,58 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+input CreateHeroInput {
+  description: String!
+  image: String!
+  name: String!
+  powerstats: PowerstatsInput!
+  remarks: [String!]
+}
+
+type Hero {
+  description: String!
+  id: ID!
+  image: String!
+  name: String!
+  powerstats: Powerstats!
+  remarks: [String!]
+}
+
+type Mutation {
+  createHero(createHeroInput: CreateHeroInput!): Hero!
+  removeHero(id: ID!): Hero!
+  updateHero(updateHeroInput: UpdateHeroInput!): Hero!
+}
+
+type Powerstats {
+  charisma: Int!
+  constitution: Int!
+  dexterity: Int!
+  intelligence: Int!
+  strength: Int!
+  wisdom: Int!
+}
+
+input PowerstatsInput {
+  charisma: Int!
+  constitution: Int!
+  dexterity: Int!
+  intelligence: Int!
+  strength: Int!
+  wisdom: Int!
+}
+
+type Query {
+  hero(id: ID!): Hero!
+  heroes: [Hero!]!
+}
+
+input UpdateHeroInput {
+  description: String
+  id: ID!
+  image: String
+  name: String
+  powerstats: PowerstatsInput
+  remarks: [String!]
+}
