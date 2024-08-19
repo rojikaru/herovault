@@ -2,27 +2,71 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Ability {
+  name: String!
+  power: Float!
+}
+
+input AbilityInput {
+  name: String!
+  power: Float!
+}
+
 input CreateHeroInput {
+  abilities: [AbilityInput!]
+  alignment: String!
+  background: String!
+  class: [String!]!
   description: String!
-  image: String!
+  equipment: [EquipmentInput!]
+  images: [String!]
+  isAiGenerated: Boolean!
   name: String!
   powerstats: PowerstatsInput!
+  race: String!
   remarks: [String!]
 }
 
+input CreateUserInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+type Equipment {
+  name: String!
+  stats: Stats
+  type: String!
+}
+
+input EquipmentInput {
+  name: String!
+  stats: StatsInput
+  type: String!
+}
+
 type Hero {
+  abilities: [Ability!]
+  alignment: String!
+  background: String!
+  class: [String!]!
   description: String!
+  equipment: [Equipment!]
   id: ID!
-  image: String!
+  images: [String!]
+  isAiGenerated: Boolean!
   name: String!
   powerstats: Powerstats!
+  race: String!
   remarks: [String!]
 }
 
 type Mutation {
   createHero(createHeroInput: CreateHeroInput!): Hero!
+  createUser(createUserInput: CreateUserInput!): User!
   removeHero(id: ID!): Hero!
+  removeUser(id: Int!): User!
   updateHero(updateHeroInput: UpdateHeroInput!): Hero!
+  updateUser(updateUserInput: UpdateUserInput!): User!
 }
 
 type Powerstats {
@@ -45,14 +89,47 @@ input PowerstatsInput {
 
 type Query {
   hero(id: ID!): Hero!
-  heroes: [Hero!]!
+  heroes(page: Int = 1, take: Int = 10): [Hero!]!
+  user(id: Int!): User!
+}
+
+type Stats {
+  attack: Float
+  defense: Float
+  health: Float
+  speed: Float
+}
+
+input StatsInput {
+  attack: Float
+  defense: Float
+  health: Float
+  speed: Float
 }
 
 input UpdateHeroInput {
-  description: String
+  abilities: [AbilityInput!]
+  addImages: [String!]
+  alignment: String!
+  background: String!
+  class: [String!]!
+  description: String!
+  equipment: [EquipmentInput!]
   id: ID!
-  image: String
-  name: String
-  powerstats: PowerstatsInput
+  name: String!
+  powerstats: PowerstatsInput!
+  race: String!
   remarks: [String!]
+  removeImages: [String!]
+}
+
+input UpdateUserInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+type User {
+  """Example field (placeholder)"""
+  exampleField: Int!
 }
