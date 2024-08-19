@@ -4,6 +4,8 @@ import { HeroModule } from './hero/hero.module';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { MongooseModule } from '@nestjs/mongoose';
+import { UserModule } from './user/user.module';
+import { AuthsModule } from './auths/auths.module';
 import mongooseFactory from './factory/mongoose.factory';
 import graphqlFactory from './factory/graphql.factory';
 
@@ -29,6 +31,8 @@ import graphqlFactory from './factory/graphql.factory';
 
     // Import business logic modules
     HeroModule,
+    UserModule,
+    AuthsModule,
   ],
   controllers: [],
   providers: [

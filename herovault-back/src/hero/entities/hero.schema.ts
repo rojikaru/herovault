@@ -1,8 +1,8 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { Document } from "mongoose";
 import { Powerstats } from "./powerstats.entity";
-import { AbilityInput } from "../dto/ability.input";
-import { EquipmentInput } from "../dto/equipment.input";
+import { Equipment } from "./equipment.entity";
+import { Ability } from "./ability.entity";
 
 @Schema()
 export class Hero extends Document {
@@ -29,9 +29,9 @@ export class Hero extends Document {
 
     @Prop({
         required: false,
-        type: [AbilityInput],
+        type: [Ability],
     })
-    abilities: [AbilityInput];
+    abilities: [Ability];
 
     // as in DnD (between 1 and 20)
     @Prop({
@@ -42,9 +42,9 @@ export class Hero extends Document {
 
     @Prop({
         required: false,
-        type: [EquipmentInput],
+        type: [Equipment],
     })
-    equipment: [EquipmentInput];
+    equipment: [Equipment];
 
     @Prop({ required: false })
     remarks: String[];
