@@ -1,7 +1,11 @@
 import { Module } from '@nestjs/common';
-import { ConfigModule } from '@nestjs/config';
-import { DatabaseModule } from './database/database.module';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import { HeroModule } from './hero/hero.module';
+import { GraphQLModule } from '@nestjs/graphql';
+import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
+import { MongooseModule } from '@nestjs/mongoose';
+import mongooseFactory from './factory/mongoose.factory';
+import graphqlFactory from './factory/graphql.factory';
 
 @Module({
   imports: [
@@ -9,13 +13,25 @@ import { HeroModule } from './hero/hero.module';
     ConfigModule.forRoot(),
 
     // Connect to the database
-    DatabaseModule,
+    MongooseModule.forRootAsync({
+      imports: [ConfigModule],
+      inject: [ConfigService],
+      useFactory: mongooseFactory,
+    }),
+
+    // Configure GraphQL
+    GraphQLModule.forRootAsync<ApolloDriverConfig>({
+      driver: ApolloDriver,
+      imports: [ConfigModule],
+      inject: [ConfigService],
+      useFactory: graphqlFactory,
+    }),
 
     // Import business logic modules
-    HeroModule, 
+    HeroModule,
   ],
   controllers: [],
   providers: [
   ],
 })
-export class AppModule {}
+export class AppModule { }
