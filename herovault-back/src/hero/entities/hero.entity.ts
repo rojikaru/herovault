@@ -1,7 +1,7 @@
 import { ObjectType, Field, ID } from '@nestjs/graphql';
 import { PowerstatsType } from './powerstats.entity';
-import { Equipment } from '../../equipment/entities/equipment.entity';
-import { Ability } from '../../ability/dto/ability.entity';
+import { AbilityType } from 'src/ability/entities/ability.entity';
+import { EquipmentType } from 'src/equipment/entities/equipment.entity';
 
 @ObjectType()
 export class HeroType {
@@ -29,20 +29,26 @@ export class HeroType {
   @Field({ nullable: false })
   background?: string;
 
-  @Field(() => [Ability], { nullable: true })
-  abilities: Ability[];
+  @Field(() => [AbilityType], { nullable: true })
+  abilities: AbilityType[];
 
   @Field(() => PowerstatsType, { nullable: false })
   powerstats: PowerstatsType;
 
-  @Field(() => [Equipment], { nullable: true })
-  equipment: Equipment[];
+  @Field(() => [EquipmentType], { nullable: true })
+  equipment: EquipmentType[];
 
   @Field(() => Boolean, { nullable: false })
   isAiGenerated: boolean;
 
   @Field(() => [String], { nullable: true })
   remarks?: string[];
+
+  @Field(() => Date, { nullable: false })
+  createdAt: Date;
+
+  @Field(() => Date, { nullable: false })
+  updatedAt: Date;
 
   // TODO: Implement users
   // @Field({ nullable: false })

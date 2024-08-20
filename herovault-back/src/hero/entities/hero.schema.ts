@@ -1,11 +1,11 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { Document } from "mongoose";
 import { PowerstatsType } from "./powerstats.entity";
-import { Equipment } from "./equipment.entity";
-import { Ability } from "./ability.entity";
+import { AbilityDocument } from "src/ability/entities/ability.schema";
+import { EquipmentDocument } from "src/equipment/entities/equipment.schema";
 
 @Schema()
-export class Hero extends Document {
+export class HeroDocument extends Document {
     @Prop({ required: true })
     name: String;
 
@@ -29,9 +29,9 @@ export class Hero extends Document {
 
     @Prop({
         required: false,
-        type: [Ability],
+        type: [AbilityDocument],
     })
-    abilities: Ability[];
+    abilities: AbilityDocument[];
 
     // as in DnD (between 1 and 20)
     @Prop({
@@ -42,9 +42,9 @@ export class Hero extends Document {
 
     @Prop({
         required: false,
-        type: [Equipment],
+        type: [EquipmentDocument],
     })
-    equipment: Equipment[];
+    equipment: EquipmentDocument[];
 
     @Prop({ required: false })
     remarks: String[];
@@ -58,10 +58,10 @@ export class Hero extends Document {
 
     // timestamps
     @Prop({ required: true })
-    created_at: Date;
+    createdAt: Date;
 
     @Prop({ required: true })
-    updated_at: Date;
+    updatedAt: Date;
 }
 
-export const HeroSchema = SchemaFactory.createForClass(Hero);
+export const HeroSchema = SchemaFactory.createForClass(HeroDocument);
