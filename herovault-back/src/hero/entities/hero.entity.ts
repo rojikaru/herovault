@@ -2,6 +2,7 @@ import { ObjectType, Field, ID } from '@nestjs/graphql';
 import { PowerstatsType } from './powerstats.entity';
 import { AbilityType } from 'src/ability/entities/ability.entity';
 import { EquipmentType } from 'src/equipment/entities/equipment.entity';
+import { UserType } from 'src/user/entities/user.entity';
 
 @ObjectType()
 export class HeroType {
@@ -50,7 +51,6 @@ export class HeroType {
   @Field(() => Date, { nullable: false })
   updatedAt: Date;
 
-  // TODO: Implement users
-  // @Field({ nullable: false })
-  // user_id: string;
+  @Field(() => UserType, { nullable: false })
+  user: UserType;
 }

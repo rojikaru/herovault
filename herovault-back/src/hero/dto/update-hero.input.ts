@@ -1,39 +1,37 @@
 import { InputType, Field, ID } from '@nestjs/graphql';
-import { AbilityInput } from '../../ability/dto/ability.input';
-import { EquipmentInput } from '../../equipment/dto/equipment.input';
-import { PowerstatsInput } from './powerstats.input';
+import { UpdatePowerstatsInput } from './powerstats.input';
 
 @InputType()
 export class UpdateHeroInput {
-  @Field(() => ID)
+  @Field(() => ID, { nullable: false })
   id: string;
 
-  @Field({ nullable: false })
+  @Field({ nullable: true })
   name: string;
 
-  @Field({ nullable: false })
+  @Field({ nullable: true })
   description: string;
 
-  @Field({ nullable: false })
+  @Field({ nullable: true })
   race: string;
 
-  @Field({ nullable: false })
+  @Field({ nullable: true })
   alignment: string;
 
-  @Field(() => [String], { nullable: false })
+  @Field(() => [String], { nullable: true })
   class: [string];
 
-  @Field({ nullable: false })
+  @Field({ nullable: true })
   background?: string;
 
-  @Field(() => [AbilityInput], { nullable: true })
-  abilities: AbilityInput[];
+  @Field(() => UpdatePowerstatsInput, { nullable: true })
+  powerstats: UpdatePowerstatsInput;
 
-  @Field(() => PowerstatsInput, { nullable: false })
-  powerstats: PowerstatsInput;
+  @Field(() => [ID], { nullable: true })
+  abilityIds: string[];
 
-  @Field(() => [EquipmentInput], { nullable: true })
-  equipment: EquipmentInput[];
+  @Field(() => [ID], { nullable: true })
+  equipmentIds: string[];
 
   @Field(() => [String], { nullable: true })
   remarks?: string[];

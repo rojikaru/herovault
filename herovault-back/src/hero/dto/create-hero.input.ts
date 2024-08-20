@@ -1,7 +1,5 @@
-import { InputType, Field } from '@nestjs/graphql';
-import { AbilityInput } from '../../ability/dto/ability.input';
-import { EquipmentInput } from '../../equipment/dto/equipment.input';
-import { PowerstatsInput } from './powerstats.input';
+import { InputType, Field, ID } from '@nestjs/graphql';
+import { CreatePowerstatsInput } from './powerstats.input';
 
 @InputType()
 export class CreateHeroInput {
@@ -26,22 +24,15 @@ export class CreateHeroInput {
   @Field({ nullable: false })
   background?: string;
 
-  @Field(() => [AbilityInput], { nullable: true })
-  abilities: AbilityInput[];
+  @Field(() => CreatePowerstatsInput, { nullable: false })
+  powerstats: CreatePowerstatsInput;
 
-  @Field(() => PowerstatsInput, { nullable: false })
-  powerstats: PowerstatsInput;
+  @Field(() => [ID], { nullable: true })
+  abilityIds: string[];
 
-  @Field(() => [EquipmentInput], { nullable: true })
-  equipment: EquipmentInput[];
+  @Field(() => [ID], { nullable: true })
+  equipmentIds: string[];
 
   @Field(() => [String], { nullable: true })
   remarks?: string[];
-
-  @Field(() => Boolean, { nullable: false })
-  isAiGenerated: boolean;
-
-  // TODO: Implement users
-  // @Field(() => String, { nullable: false})
-  // user_id: String;
 }
