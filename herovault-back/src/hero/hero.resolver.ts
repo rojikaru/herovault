@@ -3,53 +3,34 @@ import { HeroService } from './hero.service';
 import { HeroType } from './entities/hero.entity';
 import { CreateHeroInput } from './dto/create-hero.input';
 import { UpdateHeroInput } from './dto/update-hero.input';
-import { Logger } from '@nestjs/common';
 import { PaginationArgs } from 'src/dto/pagination.args';
 
 @Resolver(() => HeroType)
 export class HeroResolver {
-  private readonly logger: Logger;
-
-  constructor(private readonly heroService: HeroService) {
-    this.logger = new Logger(HeroResolver.name);
-    this.logger.log('HeroResolver instantiated');
-  }
+  constructor(private readonly heroService: HeroService) {}
 
   @Mutation(() => HeroType)
   async createHero(@Args('createHeroInput') createHeroInput: CreateHeroInput) {
-    const hero = await this.heroService.create(createHeroInput);
-    this.logger.log(`Created hero with id ${hero.id}`);
-    return hero;
+    return await this.heroService.create(createHeroInput);
   }
 
   @Query(() => [HeroType], { name: 'heroes' })
   async findAll(@Args() args: PaginationArgs = new PaginationArgs(1, 10)) {
-    const heroes = await this.heroService.findAll(args);
-    this.logger.log(`Retrieved ${heroes.length} heroes`);
-    return heroes;
+    return await this.heroService.findAll(args);
   }
 
   @Query(() => HeroType, { name: 'hero' })
   async findOne(@Args('id', { type: () => ID }) id: string) {
-    const hero = await this.heroService.findOne(id);
-    this.logger.log(`Retrieved hero with id ${id}`);
-    return hero;
+    return await this.heroService.findOne(id);
   }
 
   @Mutation(() => HeroType)
   async updateHero(@Args('updateHeroInput') updateHeroInput: UpdateHeroInput) {
-    const hero = await this.heroService.update(
-      updateHeroInput.id,
-      updateHeroInput,
-    );
-    this.logger.log(`Updated hero with id ${hero.id}`);
-    return hero;
+    return await this.heroService.update(updateHeroInput.id, updateHeroInput);
   }
 
   @Mutation(() => HeroType)
   async removeHero(@Args('id', { type: () => ID }) id: string) {
-    const hero = await this.heroService.remove(id);
-    this.logger.log(`Deleted hero with id ${id}`);
-    return hero;
+    return await this.heroService.remove(id);
   }
 }

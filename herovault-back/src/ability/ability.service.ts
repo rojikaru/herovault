@@ -11,7 +11,7 @@ export class AbilityService {
   constructor(
     @InjectModel(AbilityDocument.name)
     private readonly abilityModel: Model<AbilityDocument>,
-  ) { }
+  ) {}
 
   async create(createAbilityInput: CreateAbilityInput) {
     return await this.abilityModel.create(createAbilityInput);
@@ -28,11 +28,9 @@ export class AbilityService {
   }
 
   async update(id: string, updateAbilityInput: UpdateAbilityInput) {
-    return await this.abilityModel.findByIdAndUpdate(
-      id,
-      updateAbilityInput,
-      { new: true }
-    ).exec();
+    return await this.abilityModel
+      .findByIdAndUpdate(id, updateAbilityInput, { new: true })
+      .exec();
   }
 
   async remove(id: string) {
