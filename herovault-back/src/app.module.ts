@@ -6,6 +6,8 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { MongooseModule } from '@nestjs/mongoose';
 import { UserModule } from './user/user.module';
 import { AuthsModule } from './auths/auths.module';
+import { AbilityModule } from './ability/ability.module';
+import { EquipmentModule } from './equipment/equipment.module';
 import mongooseFactory from './factory/mongoose.factory';
 import graphqlFactory from './factory/graphql.factory';
 
@@ -33,9 +35,10 @@ import graphqlFactory from './factory/graphql.factory';
     HeroModule,
     UserModule,
     AuthsModule,
+    AbilityModule,
+    EquipmentModule,
   ],
   controllers: [],
-  providers: [
-  ],
+  providers: [],
 })
-export class AppModule { }
+export class AppModule {}

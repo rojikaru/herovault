@@ -15,4 +15,4 @@ import { AbilityDocument, AbilitySchema } from './entities/ability.schema';
   ],
   providers: [AbilityResolver, AbilityService],
 })
-export class AbilityModule { }
+export class AbilityModule {}

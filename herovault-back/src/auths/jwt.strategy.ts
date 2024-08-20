@@ -7,9 +7,9 @@ import constants from 'src/constants';
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
-  constructor(private configService: ConfigService) {
-    const issuer = configService.getOrThrow<string>(constants.auth0_issuer)
-    const audience = configService.getOrThrow<string>(constants.auth0_audience)
+  constructor(configService: ConfigService) {
+    const issuer = configService.getOrThrow<string>(constants.auth0_issuer);
+    const audience = configService.getOrThrow<string>(constants.auth0_audience);
 
     super({
       secretOrKeyProvider: passportJwtSecret({
