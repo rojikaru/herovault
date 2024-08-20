@@ -10,8 +10,8 @@ import { PaginationArgs } from 'src/dto/pagination.args';
 export class HeroService {
   constructor(
     @InjectModel(Hero.name)
-    private readonly heroModel: Model<Hero>
-  ) { }
+    private readonly heroModel: Model<Hero>,
+  ) {}
 
   async create(createHeroInput: CreateHeroInput): Promise<Hero> {
     const newHero = await this.heroModel.create({
@@ -23,16 +23,16 @@ export class HeroService {
   }
 
   async findAll(args: PaginationArgs): Promise<Hero[]> {
-    PaginationArgs.validate(args)
-    
+    PaginationArgs.validate(args);
+
     const { page, take } = args;
     const skip = (page - 1) * take;
-    
+
     return this.heroModel.find().skip(skip).limit(take).exec();
   }
 
   async findOne(id: string): Promise<Hero> {
-    const hero = await this.heroModel.findById(id).exec()
+    const hero = await this.heroModel.findById(id).exec();
     if (!hero) {
       throw new NotFoundException(`Hero with id ${id} not found`);
     }
@@ -40,14 +40,20 @@ export class HeroService {
   }
 
   async update(id: string, updateHeroInput: UpdateHeroInput): Promise<Hero> {
-    const updatedHero = await this.heroModel.findByIdAndUpdate(id, {
-      ...updateHeroInput,
-      updated_at: new Date().toUTCString(),
-    }, { new: true }).exec();
+    const updatedHero = await this.heroModel
+      .findByIdAndUpdate(
+        id,
+        {
+          ...updateHeroInput,
+          updated_at: new Date().toUTCString(),
+        },
+        { new: true },
+      )
+      .exec();
     if (!updatedHero) {
       throw new NotFoundException(`Hero with id ${id} not found`);
     }
-    return updatedHero
+    return updatedHero;
   }
 
   async remove(id: string): Promise<Hero | null> {
@@ -55,6 +61,6 @@ export class HeroService {
     if (!deletedHero) {
       throw new NotFoundException(`Hero with id ${id} not found`);
     }
-    return deletedHero
+    return deletedHero;
   }
 }

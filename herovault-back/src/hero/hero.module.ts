@@ -3,20 +3,17 @@ import { HeroService } from './hero.service';
 import { HeroResolver } from './hero.resolver';
 import { MongooseModule } from '@nestjs/mongoose';
 import { HeroSchema } from './entities/hero.schema';
-import { Hero } from './entities/hero.entity';
+import { HeroType } from './entities/hero.entity';
 
 @Module({
   imports: [
     MongooseModule.forFeature([
       {
-        name: Hero.name,
+        name: HeroType.name,
         schema: HeroSchema,
       },
     ]),
   ],
-  providers: [
-    HeroResolver, 
-    HeroService
-  ],
+  providers: [HeroResolver, HeroService],
 })
 export class HeroModule {}

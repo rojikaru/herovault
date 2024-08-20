@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { Document } from "mongoose";
-import { Powerstats } from "./powerstats.entity";
+import { PowerstatsType } from "./powerstats.entity";
 import { Equipment } from "./equipment.entity";
 import { Ability } from "./ability.entity";
 
@@ -13,7 +13,7 @@ export class Hero extends Document {
     description: String;
 
     @Prop({ required: true })
-    images: [String];
+    images: String[];
 
     @Prop({ required: true })
     race: String;
@@ -22,7 +22,7 @@ export class Hero extends Document {
     alignment: String;
 
     @Prop({ required: true })
-    class: [String];
+    class: String[];
 
     @Prop({ required: false })
     background?: String;
@@ -31,20 +31,20 @@ export class Hero extends Document {
         required: false,
         type: [Ability],
     })
-    abilities: [Ability];
+    abilities: Ability[];
 
     // as in DnD (between 1 and 20)
     @Prop({
         required: true,
-        type: Powerstats,
+        type: PowerstatsType,
     })
-    powerstats: Powerstats;
+    powerstats: PowerstatsType;
 
     @Prop({
         required: false,
         type: [Equipment],
     })
-    equipment: [Equipment];
+    equipment: Equipment[];
 
     @Prop({ required: false })
     remarks: String[];

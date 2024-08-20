@@ -1,29 +1,50 @@
-import { Prop, Schema } from "@nestjs/mongoose";
-import { Document } from "mongoose";
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { Document, Types } from 'mongoose';
+import { Hero } from 'src/hero/entities/hero.schema';
 
 @Schema()
-export default class User extends Document {
-    @Prop({required: true})
-    username: String;
+export class User extends Document {
+  @Prop({ required: true })
+  username: string;
 
-    @Prop({required: true})
-    password: String;
+  @Prop({ required: true })
+  password: string;
 
-    @Prop({required: true})
-    email: String;
+  @Prop({ required: true })
+  email: string;
 
-    @Prop({required: true})
-    firstName: String;
+  @Prop({ required: true })
+  firstName: string;
 
-    @Prop({required: true})
-    lastName: String;
+  @Prop({ required: true })
+  lastName: string;
 
-    @Prop({required: false})
-    pfp: String;
+  @Prop({ required: false })
+  pfp?: string;
 
-    @Prop({required: false})
-    bio: String;
+  @Prop({ required: false })
+  bio?: string;
 
-    @Prop({required: false})
-    heroes: String[];
+  @Prop({ required: true })
+  role: string;
+
+  @Prop({
+    type: [{ type: Types.ObjectId, ref: 'Hero' }],
+    required: true,
+  })
+  heroes: Hero[];
+
+  @Prop({
+    type: [{ type: Types.ObjectId, ref: 'Hero' }],
+    required: true,
+  })
+  likedHeroes: Hero[];
+
+  @Prop({ required: true })
+  createdAt: Date;
+
+  @Prop({ required: true })
+  updatedAt: Date;
 }
+
+export const UserSchema = SchemaFactory.createForClass(User); 

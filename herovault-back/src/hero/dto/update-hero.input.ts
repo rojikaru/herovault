@@ -1,8 +1,7 @@
-import { CreateHeroInput } from './create-hero.input';
-import { InputType, Field, PartialType, ID, OmitType } from '@nestjs/graphql';
+import { InputType, Field, ID } from '@nestjs/graphql';
+import { AbilityInput } from '../../ability/dto/ability.input';
+import { EquipmentInput } from '../../equipment/dto/equipment.input';
 import { PowerstatsInput } from './powerstats.input';
-import { AbilityInput } from './ability.input';
-import { EquipmentInput } from './equipment.input';
 
 @InputType()
 export class UpdateHeroInput {
@@ -16,16 +15,16 @@ export class UpdateHeroInput {
   description: string;
 
   @Field({ nullable: false })
-  race: String;
+  race: string;
 
   @Field({ nullable: false })
-  alignment: String;
+  alignment: string;
 
   @Field(() => [String], { nullable: false })
-  class: [String];
+  class: [string];
 
   @Field({ nullable: false })
-  background?: String;
+  background?: string;
 
   @Field(() => [AbilityInput], { nullable: true })
   abilities: AbilityInput[];

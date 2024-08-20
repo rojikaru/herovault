@@ -1,10 +1,10 @@
 import { ObjectType, Field, ID } from '@nestjs/graphql';
-import { Powerstats } from './powerstats.entity';
-import { Equipment } from './equipment.entity';
-import { Ability } from './ability.entity';
+import { PowerstatsType } from './powerstats.entity';
+import { Equipment } from '../../equipment/entities/equipment.entity';
+import { Ability } from '../../ability/dto/ability.entity';
 
 @ObjectType()
-export class Hero {
+export class HeroType {
   @Field(() => ID)
   id: string;
 
@@ -18,22 +18,22 @@ export class Hero {
   images: string[];
 
   @Field({ nullable: false })
-  race: String;
+  race: string;
 
   @Field({ nullable: false })
-  alignment: String
+  alignment: string;
 
   @Field(() => [String], { nullable: false })
-  class: [String];
+  class: [string];
 
   @Field({ nullable: false })
-  background?: String;
+  background?: string;
 
   @Field(() => [Ability], { nullable: true })
   abilities: Ability[];
 
-  @Field(() => Powerstats, { nullable: false })
-  powerstats: Powerstats;
+  @Field(() => PowerstatsType, { nullable: false })
+  powerstats: PowerstatsType;
 
   @Field(() => [Equipment], { nullable: true })
   equipment: Equipment[];
