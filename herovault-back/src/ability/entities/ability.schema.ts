@@ -1,8 +1,9 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
+import { Document, Types } from 'mongoose';
+import { Hero } from 'src/hero/entities/hero.schema';
 
 @Schema()
-export class AbilityDocument extends Document {
+export class Ability extends Document {
   @Prop({ required: true })
   name: string;
 
@@ -20,6 +21,11 @@ export class AbilityDocument extends Document {
 
   @Prop({ required: true })
   updatedAt: Date;
+
+  @Prop({ 
+    type: [{ type: Types.ObjectId, ref: 'Hero' }],
+  })
+  heroes: Hero[];
 }
 
-export const AbilitySchema = SchemaFactory.createForClass(AbilityDocument);
+export const AbilitySchema = SchemaFactory.createForClass(Ability);

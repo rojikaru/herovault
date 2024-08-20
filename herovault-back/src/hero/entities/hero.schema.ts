@@ -1,12 +1,12 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Types } from 'mongoose';
 import { PowerstatsType } from './powerstats.entity';
-import { AbilityDocument } from 'src/ability/entities/ability.schema';
-import { EquipmentDocument } from 'src/equipment/entities/equipment.schema';
-import { UserDocument } from 'src/user/entities/user.schema';
+import { Ability } from 'src/ability/entities/ability.schema';
+import { Equipment } from 'src/equipment/entities/equipment.schema';
+import { User } from 'src/user/entities/user.schema';
 
 @Schema()
-export class HeroDocument extends Document {
+export class Hero extends Document {
   @Prop({ required: true })
   name: string;
 
@@ -30,9 +30,10 @@ export class HeroDocument extends Document {
 
   @Prop({
     required: false,
-    type: [AbilityDocument],
+    type: [Ability],
+    ref: 'Ability',
   })
-  abilities: AbilityDocument[];
+  abilities: Ability[];
 
   // as in DnD (between 1 and 20)
   @Prop({
@@ -43,9 +44,10 @@ export class HeroDocument extends Document {
 
   @Prop({
     required: false,
-    type: [EquipmentDocument],
+    type: [Equipment],
+    ref: 'Equipment',
   })
-  equipment: EquipmentDocument[];
+  equipment: Equipment[];
 
   @Prop({ required: false })
   remarks: string[];
@@ -53,10 +55,10 @@ export class HeroDocument extends Document {
   // TODO: Implement users
   @Prop({
     type: Types.ObjectId,
-    ref: UserDocument.name,
+    ref: 'User',
     required: true,
   })
-  user: UserDocument;
+  user: User;
 
   @Prop({ required: true })
   isAiGenerated: boolean;
@@ -69,4 +71,4 @@ export class HeroDocument extends Document {
   updatedAt: Date;
 }
 
-export const HeroSchema = SchemaFactory.createForClass(HeroDocument);
+export const HeroSchema = SchemaFactory.createForClass(Hero);

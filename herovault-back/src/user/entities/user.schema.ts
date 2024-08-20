@@ -1,9 +1,9 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Types } from 'mongoose';
-import { HeroDocument } from 'src/hero/entities/hero.schema';
+import { Hero } from 'src/hero/entities/hero.schema';
 
 @Schema()
-export class UserDocument extends Document {
+export class User extends Document {
   @Prop({ required: true })
   username: string;
 
@@ -29,16 +29,12 @@ export class UserDocument extends Document {
   role: string;
 
   @Prop({
-    type: [{ type: Types.ObjectId, ref: HeroDocument.name }],
+    type: [{ type: Types.ObjectId, ref: 'Hero' }],
     required: true,
   })
-  heroes: HeroDocument[];
+  heroes: Hero[];
 
-  @Prop({
-    type: [{ type: Types.ObjectId, ref: HeroDocument.name }],
-    required: true,
-  })
-  likedHeroes: HeroDocument[];
+  // TODO: Add likes
 
   @Prop({ required: true })
   createdAt: Date;
@@ -47,4 +43,4 @@ export class UserDocument extends Document {
   updatedAt: Date;
 }
 
-export const UserSchema = SchemaFactory.createForClass(UserDocument);
+export const UserSchema = SchemaFactory.createForClass(User);

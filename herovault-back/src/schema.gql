@@ -2,74 +2,47 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type Ability {
+type AbilityType {
+  createdAt: DateTime!
+  description: String!
+  id: ID!
   name: String!
-  power: Float!
+  type: String!
+  updatedAt: DateTime!
+  value: Float!
 }
 
-input AbilityInput {
+input CreateAbilityInput {
+  description: String!
   name: String!
-  power: Float!
+  type: String!
+  value: Int!
+}
+
+input CreateEquipmentInput {
+  description: String
+  impact: Int!
+  name: String!
+  rarity: String!
+  type: String!
+  weight: Int!
 }
 
 input CreateHeroInput {
-  abilities: [AbilityInput!]
+  abilityIds: [ID!]
   alignment: String!
   background: String!
   class: [String!]!
   description: String!
-  equipment: [EquipmentInput!]
+  equipmentIds: [ID!]
   images: [String!]
-  isAiGenerated: Boolean!
   name: String!
-  powerstats: PowerstatsInput!
+  powerstats: CreatePowerstatsInput!
   race: String!
   remarks: [String!]
 }
 
-input CreateUserInput {
-  """Example field (placeholder)"""
-  exampleField: Int!
-}
-
-type Equipment {
-  name: String!
-  stats: Stats
-  type: String!
-}
-
-input EquipmentInput {
-  name: String!
-  stats: StatsInput
-  type: String!
-}
-
-type Hero {
-  abilities: [Ability!]
-  alignment: String!
-  background: String!
-  class: [String!]!
-  description: String!
-  equipment: [Equipment!]
-  id: ID!
-  images: [String!]
-  isAiGenerated: Boolean!
-  name: String!
-  powerstats: Powerstats!
-  race: String!
-  remarks: [String!]
-}
-
-type Mutation {
-  createHero(createHeroInput: CreateHeroInput!): Hero!
-  createUser(createUserInput: CreateUserInput!): User!
-  removeHero(id: ID!): Hero!
-  removeUser(id: Int!): User!
-  updateHero(updateHeroInput: UpdateHeroInput!): Hero!
-  updateUser(updateUserInput: UpdateUserInput!): User!
-}
-
-type Powerstats {
+input CreatePowerstatsInput {
   charisma: Int!
   constitution: Int!
   dexterity: Int!
@@ -78,58 +51,146 @@ type Powerstats {
   wisdom: Int!
 }
 
-input PowerstatsInput {
+input CreateUserInput {
+  bio: String
+  email: String!
+  firstName: String!
+  lastName: String!
+  password: String!
+  pfp: String
+  username: String!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type EquipmentType {
+  createdAt: DateTime!
+  description: String
+  impact: Float!
+  name: String!
+  rarity: String!
+  type: String!
+  updatedAt: DateTime!
+  weight: Float!
+}
+
+type HeroType {
+  abilities: [AbilityType!]
+  alignment: String!
+  background: String!
+  class: [String!]!
+  createdAt: DateTime!
+  description: String!
+  equipment: [EquipmentType!]
+  id: ID!
+  images: [String!]
+  isAiGenerated: Boolean!
+  name: String!
+  powerstats: PowerstatsType!
+  race: String!
+  remarks: [String!]
+  updatedAt: DateTime!
+  user: UserType!
+}
+
+type Mutation {
+  createAbility(createAbilityInput: CreateAbilityInput!): AbilityType!
+  createEquipment(createEquipmentInput: CreateEquipmentInput!): EquipmentType!
+  createHero(createHeroInput: CreateHeroInput!): HeroType!
+  createUser(createUserInput: CreateUserInput!): UserType!
+  removeAbility(id: ID!): AbilityType!
+  removeEquipment(id: ID!): EquipmentType!
+  removeHero(id: ID!): HeroType!
+  removeUser(id: ID!): UserType!
+  updateAbility(updateAbilityInput: UpdateAbilityInput!): AbilityType!
+  updateEquipment(updateEquipmentInput: UpdateEquipmentInput!): EquipmentType!
+  updateHero(updateHeroInput: UpdateHeroInput!): HeroType!
+  updateUser(updateUserInput: UpdateUserInput!): UserType!
+}
+
+type PowerstatsType {
   charisma: Int!
   constitution: Int!
   dexterity: Int!
+  hero: HeroType!
   intelligence: Int!
   strength: Int!
   wisdom: Int!
 }
 
 type Query {
-  hero(id: ID!): Hero!
-  heroes(page: Int = 1, take: Int = 10): [Hero!]!
-  user(id: Int!): User!
+  ability(id: ID!): AbilityType!
+  equipment(id: ID!): EquipmentType!
+  hero(id: ID!): HeroType!
+  heroes(page: Int = 1, take: Int = 10): [HeroType!]!
+  user(id: Int!): UserType!
 }
 
-type Stats {
-  attack: Float
-  defense: Float
-  health: Float
-  speed: Float
+input UpdateAbilityInput {
+  description: String
+  id: ID!
+  name: String
+  type: String
+  value: Int
 }
 
-input StatsInput {
-  attack: Float
-  defense: Float
-  health: Float
-  speed: Float
+input UpdateEquipmentInput {
+  description: String
+  id: ID!
+  impact: Int
+  name: String
+  rarity: String
+  type: String
+  weight: Int
 }
 
 input UpdateHeroInput {
-  abilities: [AbilityInput!]
+  abilityIds: [ID!]
   addImages: [String!]
-  alignment: String!
-  background: String!
-  class: [String!]!
-  description: String!
-  equipment: [EquipmentInput!]
+  alignment: String
+  background: String
+  class: [String!]
+  description: String
+  equipmentIds: [ID!]
   id: ID!
-  name: String!
-  powerstats: PowerstatsInput!
-  race: String!
+  name: String
+  powerstats: UpdatePowerstatsInput
+  race: String
   remarks: [String!]
   removeImages: [String!]
 }
 
-input UpdateUserInput {
-  """Example field (placeholder)"""
-  exampleField: Int
-  id: Int!
+input UpdatePowerstatsInput {
+  charisma: Int
+  constitution: Int
+  dexterity: Int
+  intelligence: Int
+  strength: Int
+  wisdom: Int
 }
 
-type User {
-  """Example field (placeholder)"""
-  exampleField: Int!
+input UpdateUserInput {
+  bio: String
+  email: String
+  firstName: String
+  id: ID!
+  lastName: String
+  password: String
+  pfp: String
+  username: String
+}
+
+type UserType {
+  bio: String
+  email: String!
+  firstName: String!
+  heroes: [HeroType!]!
+  id: ID!
+  lastName: String!
+  likedHeroes: [HeroType!]!
+  pfp: String
+  username: String!
 }
