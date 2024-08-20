@@ -5,22 +5,39 @@ import { Hero } from './entities/hero.schema';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { PaginationArgs } from 'src/dto/pagination.args';
+import { Ability } from 'src/ability/entities/ability.schema';
+import { Equipment } from 'src/equipment/entities/equipment.schema';
 
 @Injectable()
 export class HeroService {
   constructor(
     @InjectModel(Hero.name)
     private readonly heroModel: Model<Hero>,
-  ) {}
+    @InjectModel(Ability.name)
+    private readonly abilityModel: Model<Ability>,
+    @InjectModel(Equipment.name)
+    private readonly equipmentModel: Model<Equipment>,
+  ) { }
 
   async create(createHeroInput: CreateHeroInput): Promise<Hero> {
-    const newHero = await this.heroModel.create({
+    const newHero = new this.heroModel({
       ...createHeroInput,
-      isAiGenerated: false,
-      created_at: new Date().toUTCString(),
-      updated_at: new Date().toUTCString(),
+      createdAt: new Date().toUTCString(),
+      updatedAt: new Date().toUTCString(),
     });
-    return newHero;
+    if (createHeroInput.abilityIds) {
+      const abilities = await this.abilityModel
+        .find({ _id: { $in: createHeroInput.abilityIds } })
+        .exec();
+      newHero.abilities = abilities;
+    }
+    if (createHeroInput.equipmentIds) {
+      const equipment = await this.equipmentModel
+        .find({ _id: { $in: createHeroInput.equipmentIds } })
+        .exec();
+      newHero.equipment = equipment;
+    }
+    return await newHero.save();
   }
 
   async findAll(args: PaginationArgs): Promise<Hero[]> {
@@ -44,20 +61,27 @@ export class HeroService {
     id: string,
     updateHeroInput: UpdateHeroInput,
   ): Promise<Hero> {
-    const updatedHero = await this.heroModel
-      .findByIdAndUpdate(
-        id,
-        {
-          ...updateHeroInput,
-          updated_at: new Date().toUTCString(),
-        },
-        { new: true },
-      )
-      .exec();
-    if (!updatedHero) {
-      throw new NotFoundException(`Hero with id ${id} not found`);
+    const updatedHero = new this.heroModel({
+      ...updateHeroInput,
+      updatedAt: new Date().toUTCString(),
+    });
+    if (updateHeroInput.abilityIds) {
+      const abilities = await this.abilityModel
+        .find({ _id: { $in: updateHeroInput.abilityIds } })
+        .exec();
+      updatedHero.abilities = abilities;
     }
-    return updatedHero;
+    if (updateHeroInput.equipmentIds) {
+      const equipment = await this.equipmentModel
+        .find({ _id: { $in: updateHeroInput.equipmentIds } })
+        .exec();
+      updatedHero.equipment = equipment;
+    }
+    return await this.heroModel.findByIdAndUpdate(
+      id,
+      updatedHero,
+      { new: true },
+    ).exec()
   }
 
   async remove(id: string): Promise<Hero | null> {
@@ -66,5 +90,13 @@ export class HeroService {
       throw new NotFoundException(`Hero with id ${id} not found`);
     }
     return deletedHero;
+  }
+
+  async getEquipment(heroId: string): Promise<Equipment[]> {
+    return await this.equipmentModel.find({ heroId }).exec();
+  }
+
+  async getAbilities(heroId: string): Promise<Ability[]> {
+    return await this.abilityModel.find({ heroId }).exec();
   }
 }
