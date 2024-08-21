@@ -51,16 +51,6 @@ input CreatePowerstatsInput {
   wisdom: Int!
 }
 
-input CreateUserInput {
-  bio: String
-  email: String!
-  firstName: String!
-  lastName: String!
-  password: String!
-  pfp: String
-  username: String!
-}
-
 """
 A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
 """
@@ -100,15 +90,12 @@ type Mutation {
   createAbility(createAbilityInput: CreateAbilityInput!): AbilityType!
   createEquipment(createEquipmentInput: CreateEquipmentInput!): EquipmentType!
   createHero(createHeroInput: CreateHeroInput!): HeroType!
-  createUser(createUserInput: CreateUserInput!): UserType!
   removeAbility(id: ID!): AbilityType!
   removeEquipment(id: ID!): EquipmentType!
   removeHero(id: ID!): HeroType!
-  removeUser(id: ID!): UserType!
   updateAbility(updateAbilityInput: UpdateAbilityInput!): AbilityType!
   updateEquipment(updateEquipmentInput: UpdateEquipmentInput!): EquipmentType!
   updateHero(updateHeroInput: UpdateHeroInput!): HeroType!
-  updateUser(updateUserInput: UpdateUserInput!): UserType!
 }
 
 type PowerstatsType {
@@ -122,11 +109,12 @@ type PowerstatsType {
 }
 
 type Query {
+  abilities(page: Int = 1, take: Int = 10): [AbilityType!]!
   ability(id: ID!): AbilityType!
   equipment(id: ID!): EquipmentType!
+  equipments(page: Int = 1, take: Int = 10): [EquipmentType!]!
   hero(id: ID!): HeroType!
   heroes(page: Int = 1, take: Int = 10): [HeroType!]!
-  user(id: Int!): UserType!
 }
 
 input UpdateAbilityInput {
@@ -172,25 +160,13 @@ input UpdatePowerstatsInput {
   wisdom: Int
 }
 
-input UpdateUserInput {
-  bio: String
-  email: String
-  firstName: String
-  id: ID!
-  lastName: String
-  password: String
-  pfp: String
-  username: String
-}
-
 type UserType {
   bio: String
   email: String!
-  firstName: String!
   heroes: [HeroType!]!
   id: ID!
-  lastName: String!
   likedHeroes: [HeroType!]!
-  pfp: String
+  name: String!
+  picture: String
   username: String!
 }

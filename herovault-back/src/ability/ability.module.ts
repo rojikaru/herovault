@@ -14,5 +14,6 @@ import { Ability, AbilitySchema } from './entities/ability.schema';
     ]),
   ],
   providers: [AbilityResolver, AbilityService],
+  exports: [AbilityService],
 })
 export class AbilityModule {}

@@ -16,7 +16,7 @@ export class EquipmentResolver {
     return await this.equipmentService.create(createEquipmentInput);
   }
 
-  @Query(() => [EquipmentType], { name: 'equipment' })
+  @Query(() => [EquipmentType], { name: 'equipments' })
   async findAll(@Args() args: PaginationArgs = new PaginationArgs(1, 10)) {
     return await this.equipmentService.findAll(args);
   }

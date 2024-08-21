@@ -13,13 +13,10 @@ export class UserType {
   email: string;
 
   @Field()
-  firstName: string;
-
-  @Field()
-  lastName: string;
+  name: string;
 
   @Field({ nullable: true })
-  pfp?: string;
+  picture?: string;
 
   @Field({ nullable: true })
   bio?: string;

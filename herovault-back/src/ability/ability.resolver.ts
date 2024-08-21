@@ -16,7 +16,7 @@ export class AbilityResolver {
     return await this.abilityService.create(createAbilityInput);
   }
 
-  @Query(() => [AbilityType], { name: 'ability' })
+  @Query(() => [AbilityType], { name: 'abilities' })
   async findAll(@Args() args: PaginationArgs = new PaginationArgs(1, 10)) {
     return await this.abilityService.findAll(args);
   }

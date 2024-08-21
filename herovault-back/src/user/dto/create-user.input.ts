@@ -6,19 +6,13 @@ export class CreateUserInput {
   username: string;
 
   @Field({ nullable: false })
-  password: string;
-
-  @Field({ nullable: false })
   email: string;
 
   @Field({ nullable: false })
-  firstName: string;
-
-  @Field({ nullable: false })
-  lastName: string;
+  name: string;
 
   @Field({ nullable: true })
-  pfp?: string;
+  picture?: string;
 
   @Field({ nullable: true })
   bio?: string;

@@ -3,6 +3,7 @@ import { UserService } from './user.service';
 import { UserType } from './entities/user.entity';
 import { CreateUserInput } from './dto/create-user.input';
 import { UpdateUserInput } from './dto/update-user.input';
+import { PaginationArgs } from 'src/dto/pagination.args';
 
 @Resolver(() => UserType)
 export class UserResolver {
@@ -13,9 +14,9 @@ export class UserResolver {
     return await this.userService.create(createUserInput);
   }
 
-  @Query(() => [UserType], { name: 'user' })
-  async findAll() {
-    return await this.userService.findAll();
+  @Query(() => [UserType], { name: 'users' })
+  async findAll(@Args() args: PaginationArgs = new PaginationArgs(1, 10)) {
+    return await this.userService.findAll(args);
   }
 
   @Query(() => UserType, { name: 'user' })
