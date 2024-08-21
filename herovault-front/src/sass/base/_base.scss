@@ -6,3 +6,7 @@ body {
     background-color: $color-background;
     -webkit-font-smoothing: antialiased;
 }
+
+html, body {
+    height: 100vh;
+}
