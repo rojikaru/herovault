@@ -1,0 +1,8 @@
+<dl *ngIf="auth.user$ | async as user">
+    <dt>Nickname</dt>
+    <dd>{{user.nickname}}</dd>
+    <dt>Full name</dt>
+    <dd>{{ user.name }}</dd>
+    <dt>Email</dt>
+    <dd>{{ user.email }}</dd>
+</dl>
