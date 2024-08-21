@@ -1,0 +1,52 @@
+// colors
+// https://colorhunt.co/palette/7c93c355679c1e2a5ee1d7b7
+$color-primary: rgb(124, 147, 195);
+$color-secondary: rgb(225, 215, 183);
+$color-tertiary: rgb(30, 42, 94);
+$color-accent: rgb(85, 103, 156);
+$color-background: rgb(241, 250, 238);
+$color-text: rgb(30, 42, 94);
+$color-text-light: rgb(255, 255, 255);
+
+// typography
+$font-base: 'Roboto', sans-serif;
+$font-heading: 'Merriweather', serif;
+$font-mono: 'Roboto Mono', monospace;
+$font-flex: 'Roboto Flex', serif;
+$text-base: 1rem;
+$text-heading: 2rem;
+$text-small: 0.875rem;
+$line-height-base: 1.5;
+$line-height-heading: 1.2;
+
+// spacing
+$padding-small: 8px;
+$padding-medium: 16px;
+$padding-large: 24px;
+$margin-small: 8px;
+$margin-medium: 16px;
+$margin-large: 24px;
+$gutter-width: 32px;
+
+// borders
+$border-radius-small: 4px;
+$border-radius-medium: 8px;
+$border-radius-large: 12px;
+$border-width-thin: 1px;
+$border-width-medium: 2px;
+$border-width-thick: 3px;
+
+// buttons
+$button-padding: 12px 24px;
+$button-text-color: hsl(0, 0%, 100%);
+
+// breakpoints
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+
+// shadows
+$box-shadow-light: 0 1px 3px rgba(0, 0, 0, 0.1);
+$box-shadow-medium: 0 3px 6px rgba(0, 0, 0, 0.15);
+$box-shadow-heavy: 0 10px 20px rgba(0, 0, 0, 0.2);

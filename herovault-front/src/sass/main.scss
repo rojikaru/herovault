@@ -1,0 +1,17 @@
+// https://sass-guidelin.es/#the-7-1-pattern
+
+@charset 'utf-8';
+
+@import 
+    'abstracts/variables',
+    'abstracts/mixins',
+    'abstracts/functions',
+    'abstracts/placeholders';
+
+@import
+    'base/base',
+    'base/reset';
+
+@import
+    'layout/header',
+    'layout/footer';
