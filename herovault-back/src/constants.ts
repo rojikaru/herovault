@@ -4,10 +4,10 @@ const constants = {
   port: 'PORT',
   host: 'HOST',
   environment: 'NODE_ENV',
-  origin: 'CORS_ORIGIN',
+  origin: 'CLIENT_ORIGIN',
   openai_key: 'OPENAI_API_KEY',
   auth0_issuer: 'AUTH0_ISSUER_URL',
-  auth0_audience: 'AUTH0_AUDIENCE',
+  audience: 'AUDIENCE',
 };
 
 export default constants;

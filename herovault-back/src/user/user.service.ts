@@ -32,7 +32,8 @@ export class UserService {
   }
 
   async findOrCreate(createUserInput: CreateUserInput) { 
-    const user = await this.findByUsername(createUserInput.username);
+    const user = await this.findByEmail(createUserInput.email)
+      ?? await this.findByUsername(createUserInput.username);
     if (user) {
       return user;
     }

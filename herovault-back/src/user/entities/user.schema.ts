@@ -22,8 +22,9 @@ export class User extends Document {
   @Prop({ required: true })
   role: string;
 
-  @Prop({ required: true })
-  authProvider: string;
+  // TODO: Add auth data object once auth is implemented
+  // @Prop({ required: true })
+  // authProvider: string;
 
   @Prop({
     type: [{ type: Types.ObjectId, ref: 'Hero' }],

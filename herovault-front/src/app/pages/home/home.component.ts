@@ -9,9 +9,5 @@ import { AuthService } from '@auth0/auth0-angular';
   templateUrl: './home.component.html',
 })
 export class HomeComponent {
-  constructor(public auth: AuthService) {
-    this.auth.user$.subscribe(user => {
-      console.log(user);
-    })
-  }
+  constructor(public auth: AuthService) { }
 }

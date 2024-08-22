@@ -10,7 +10,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
   private readonly logger = new Logger(JwtStrategy.name);
   constructor(configService: ConfigService) {
     const issuer = configService.getOrThrow<string>(constants.auth0_issuer);
-    const audience = configService.getOrThrow<string>(constants.auth0_audience);
+    const audience = configService.getOrThrow<string>(constants.audience);
 
     super({
       secretOrKeyProvider: passportJwtSecret({

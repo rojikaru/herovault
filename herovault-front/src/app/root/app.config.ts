@@ -2,10 +2,10 @@ import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { provideClientHydration } from '@angular/platform-browser';
-import { provideHttpClient, withFetch } from '@angular/common/http';
+import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
 import { graphqlProvider } from '../graphql.provider';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { provideAuth0 } from '@auth0/auth0-angular';
+import { authHttpInterceptorFn, provideAuth0 } from '@auth0/auth0-angular';
 import { environment } from '../../environments/environment';
 
 // TODO: Add interceptor for Auth0 to add Authorization header to API requests
@@ -18,7 +18,10 @@ export const appConfig: ApplicationConfig = {
     }),
     provideRouter(routes),
     provideClientHydration(),
-    provideHttpClient(withFetch()),
+    provideHttpClient(
+      withFetch(), 
+      withInterceptors([authHttpInterceptorFn])
+    ),
     graphqlProvider,
     provideAnimationsAsync(),
     provideAuth0({
