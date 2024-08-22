@@ -52,7 +52,6 @@ export class Hero extends Document {
   @Prop({ required: false })
   remarks: string[];
 
-  // TODO: Implement users
   @Prop({
     type: Types.ObjectId,
     ref: 'User',
