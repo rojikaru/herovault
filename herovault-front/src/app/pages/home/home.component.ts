@@ -7,7 +7,6 @@ import { AuthService } from '@auth0/auth0-angular';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
 })
 export class HomeComponent {
   constructor(public auth: AuthService) {
