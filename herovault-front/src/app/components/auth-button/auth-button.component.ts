@@ -15,4 +15,14 @@ export class AuthButtonComponent {
     @Inject(DOCUMENT) public document: Document,
     public auth: AuthService
   ) { }
+
+  login(): void {
+    this.auth.loginWithRedirect();
+  }
+
+  logout(): void {
+    this.auth.logout({
+      logoutParams: { returnTo: this.document.location.origin },
+    });
+  }
 }

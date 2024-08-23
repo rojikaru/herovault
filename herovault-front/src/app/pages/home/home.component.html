@@ -1,11 +1,12 @@
-<dl *ngIf="auth.user$ | async as user; else unauthed">
-    <dt>Nickname</dt>
-    <dd>{{user.nickname}}</dd>
-    <dt>Full name</dt>
-    <dd>{{ user.name }}</dd>
-    <dt>Email</dt>
-    <dd>{{ user.email }}</dd>
-</dl>
-<ng-template #unauthed>
+@if (auth.user$ | async; as user) {
+    <dl>
+        <dt>Nickname</dt>
+        <dd>{{user.nickname}}</dd>
+        <dt>Full name</dt>
+        <dd>{{ user.name }}</dd>
+        <dt>Email</dt>
+        <dd>{{ user.email }}</dd>
+    </dl>
+} @else {
     <h2 class="text-center">Not logged in</h2>
-</ng-template>
+}

@@ -1,14 +1,14 @@
 <mat-toolbar>
-    <h1>Herovault</h1>
-    <span class="spacer"></span>
     <!-- <button mat-icon-button class="icon">
         <mat-icon>menu</mat-icon>
     </button> -->
-    <button mat-icon-button class="icon">
+    <h1>Herovault</h1>
+    <span class="spacer"></span>
+    <a [routerLink]="['/favorites']" mat-icon-button class="icon">
         <mat-icon>favorite</mat-icon>
-    </button>
-    <button mat-icon-button class="icon">
+    </a>
+    <a [routerLink]="['/search']" mat-icon-button class="icon">
         <mat-icon>search</mat-icon>
-    </button>
+    </a>
     <app-auth-button></app-auth-button>
 </mat-toolbar>

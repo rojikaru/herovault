@@ -1,16 +1,13 @@
-<div *ngIf="!(auth.isLoading$ | async)">
-    <ng-container *ngIf="auth.isAuthenticated$ | async; else login">
-        <button mat-button (click)="auth.logout({ logoutParams: { returnTo: document.location.origin } })">
+@if (!(auth.isLoading$ | async)) {
+    @if (auth.isAuthenticated$ | async) {
+        <button mat-button (click)="logout()">
             <mat-icon>account_circle</mat-icon>
             <span>Logout</span>
         </button>
-    </ng-container>
-    
-    <ng-template #login>
-        <button mat-button (click)="auth.loginWithRedirect()">
+    } @else {
+        <button mat-button (click)="login()">
             <mat-icon>account_circle</mat-icon>
             <span>Login</span>
         </button>
-    </ng-template>
-    
-</div>
+    }
+}

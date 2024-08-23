@@ -1,0 +1,18 @@
+<mat-card class="hero-card" appearance="outlined">
+    <mat-card-header>
+        <!-- <div mat-card-avatar class="example-header-image"></div> -->
+         <!-- TODO: Add placeholder -->
+        <img mat-card-avatar class="header-image" [src]="hero.user?.picture" [alt]="['Avatar of a ', hero.user?.name]">
+        <mat-card-title>{{hero.name}}</mat-card-title>
+        <!-- TODO: Add link to user profile -->
+        <mat-card-subtitle>by {{hero.user.name}}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image [src]="hero.images[0]" [alt]="['Photo of a ', hero.name]">
+    <mat-card-content>
+        <p>{{hero.description}}</p>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-button>LIKE</button>
+        <button mat-button>SHARE</button>
+    </mat-card-actions>
+</mat-card>

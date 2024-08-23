@@ -1,14 +1,14 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Hero } from '../../models/hero';
-import { HeroComponent } from '../hero/hero.component';
+import { HeroCardComponent } from '../hero-card/hero-card.component';
 
 @Component({
-  selector: 'app-heroes',
+  selector: 'app-hero-list',
   standalone: true,
-  imports: [HeroComponent],
-  templateUrl: './heroes.component.html',
+  imports: [HeroCardComponent],
+  templateUrl: './hero-list.component.html',
 })
-export class HeroesComponent implements OnInit {
+export class HeroListComponent implements OnInit {
   @Input() heroes: Hero[] = [];
   breakpoint: number = 6;
 
