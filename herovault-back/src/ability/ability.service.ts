@@ -2,9 +2,9 @@ import { Injectable } from '@nestjs/common';
 import { CreateAbilityInput } from './dto/create-ability.input';
 import { UpdateAbilityInput } from './dto/update-ability.input';
 import { InjectModel } from '@nestjs/mongoose';
-import { Ability } from './entities/ability.schema';
+import { Ability } from '../models/schema/ability.schema';
 import { Model } from 'mongoose';
-import { PaginationArgs } from 'src/dto/pagination.args';
+import { PaginationArgs } from 'src/models/dto/pagination.args';
 
 @Injectable()
 export class AbilityService {

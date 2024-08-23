@@ -1,12 +1,12 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateHeroInput } from './dto/create-hero.input';
 import { UpdateHeroInput } from './dto/update-hero.input';
-import { Hero } from './entities/hero.schema';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { PaginationArgs } from 'src/dto/pagination.args';
-import { Ability } from 'src/ability/entities/ability.schema';
-import { Equipment } from 'src/equipment/entities/equipment.schema';
+import { PaginationArgs } from 'src/models/dto/pagination.args';
+import { Ability } from 'src/models/schema/ability.schema';
+import { Equipment } from 'src/models/schema/equipment.schema';
+import { Hero } from 'src/models/schema/hero.schema';
 
 @Injectable()
 export class HeroService {

@@ -3,7 +3,7 @@ import { HeroService } from './hero.service';
 import { HeroType } from './entities/hero.entity';
 import { CreateHeroInput } from './dto/create-hero.input';
 import { UpdateHeroInput } from './dto/update-hero.input';
-import { PaginationArgs } from 'src/dto/pagination.args';
+import { PaginationArgs } from 'src/models/dto/pagination.args';
 import { EquipmentType } from 'src/equipment/entities/equipment.entity';
 import { AbilityType } from 'src/ability/entities/ability.entity';
 

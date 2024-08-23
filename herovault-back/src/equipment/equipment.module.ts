@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { EquipmentService } from './equipment.service';
 import { EquipmentResolver } from './equipment.resolver';
 import { MongooseModule } from '@nestjs/mongoose';
-import { Equipment, EquipmentSchema } from './entities/equipment.schema';
+import { Equipment, EquipmentSchema } from '../models/schema/equipment.schema';
 
 @Module({
   imports: [

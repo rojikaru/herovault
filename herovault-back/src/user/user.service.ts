@@ -2,9 +2,9 @@ import { Injectable } from '@nestjs/common';
 import { CreateUserInput } from './dto/create-user.input';
 import { UpdateUserInput } from './dto/update-user.input';
 import { InjectModel } from '@nestjs/mongoose';
-import { User } from './entities/user.schema';
+import { User } from '../models/schema/user.schema';
 import { Model } from 'mongoose';
-import { PaginationArgs } from 'src/dto/pagination.args';
+import { PaginationArgs } from 'src/models/dto/pagination.args';
 
 @Injectable()
 export class UserService {

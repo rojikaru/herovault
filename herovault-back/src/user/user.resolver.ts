@@ -3,7 +3,7 @@ import { UserService } from './user.service';
 import { UserType } from './entities/user.entity';
 import { CreateUserInput } from './dto/create-user.input';
 import { UpdateUserInput } from './dto/update-user.input';
-import { PaginationArgs } from 'src/dto/pagination.args';
+import { PaginationArgs } from 'src/models/dto/pagination.args';
 
 @Resolver(() => UserType)
 export class UserResolver {

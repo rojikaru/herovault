@@ -1,9 +1,9 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Types } from 'mongoose';
-import { PowerstatsType } from './powerstats.entity';
-import { Ability } from 'src/ability/entities/ability.schema';
-import { Equipment } from 'src/equipment/entities/equipment.schema';
-import { User } from 'src/user/entities/user.schema';
+import { Ability } from 'src/models/schema/ability.schema';
+import { Equipment } from 'src/models/schema/equipment.schema';
+import { User } from './user.schema';
+import { PowerstatsType } from 'src/hero/entities/powerstats.entity';
 
 @Schema()
 export class Hero extends Document {

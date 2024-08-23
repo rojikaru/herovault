@@ -3,7 +3,7 @@ import { AbilityService } from './ability.service';
 import { CreateAbilityInput } from './dto/create-ability.input';
 import { UpdateAbilityInput } from './dto/update-ability.input';
 import { AbilityType } from './entities/ability.entity';
-import { PaginationArgs } from 'src/dto/pagination.args';
+import { PaginationArgs } from 'src/models/dto/pagination.args';
 
 @Resolver(() => AbilityType)
 export class AbilityResolver {

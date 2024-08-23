@@ -3,8 +3,8 @@ import { CreateEquipmentInput } from './dto/create-equipment.input';
 import { UpdateEquipmentInput } from './dto/update-equipment.input';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { Equipment } from './entities/equipment.schema';
-import { PaginationArgs } from 'src/dto/pagination.args';
+import { Equipment } from '../models/schema/equipment.schema';
+import { PaginationArgs } from 'src/models/dto/pagination.args';
 
 @Injectable()
 export class EquipmentService {

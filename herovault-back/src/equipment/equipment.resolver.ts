@@ -3,7 +3,7 @@ import { EquipmentService } from './equipment.service';
 import { CreateEquipmentInput } from './dto/create-equipment.input';
 import { UpdateEquipmentInput } from './dto/update-equipment.input';
 import { EquipmentType } from './entities/equipment.entity';
-import { PaginationArgs } from 'src/dto/pagination.args';
+import { PaginationArgs } from 'src/models/dto/pagination.args';
 
 @Resolver(() => EquipmentType)
 export class EquipmentResolver {
