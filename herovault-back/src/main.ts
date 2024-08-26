@@ -19,7 +19,11 @@ async function bootstrap() {
 
   // Start the application
   await app.listen(PORT);
-  new Logger('Bootstrap').log(`Server is running on http://${HOST}:${PORT}`);
+
+  const logger = new Logger('Bootstrap');
+  const route = `http://${HOST}:${PORT}`;
+  logger.log('Server is running on ' + route);
+  logger.log('GraphQL endpoint: ' + route + '/graphql');
 }
 
 // Entry point of the application

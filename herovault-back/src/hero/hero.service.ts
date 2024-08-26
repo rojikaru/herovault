@@ -17,7 +17,7 @@ export class HeroService {
     private readonly abilityModel: Model<Ability>,
     @InjectModel(Equipment.name)
     private readonly equipmentModel: Model<Equipment>,
-  ) { }
+  ) {}
 
   async create(createHeroInput: CreateHeroInput): Promise<Hero> {
     const newHero = new this.heroModel({
@@ -57,10 +57,7 @@ export class HeroService {
     return hero;
   }
 
-  async update(
-    id: string,
-    updateHeroInput: UpdateHeroInput,
-  ): Promise<Hero> {
+  async update(id: string, updateHeroInput: UpdateHeroInput): Promise<Hero> {
     const updatedHero = new this.heroModel({
       ...updateHeroInput,
       updatedAt: new Date().toUTCString(),
@@ -77,11 +74,9 @@ export class HeroService {
         .exec();
       updatedHero.equipment = equipment;
     }
-    return await this.heroModel.findByIdAndUpdate(
-      id,
-      updatedHero,
-      { new: true },
-    ).exec()
+    return await this.heroModel
+      .findByIdAndUpdate(id, updatedHero, { new: true })
+      .exec();
   }
 
   async remove(id: string): Promise<Hero | null> {

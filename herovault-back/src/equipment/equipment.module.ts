@@ -10,9 +10,9 @@ import { Equipment, EquipmentSchema } from '../models/schema/equipment.schema';
       {
         name: Equipment.name,
         schema: EquipmentSchema,
-      }
+      },
     ]),
   ],
   providers: [EquipmentResolver, EquipmentService],
 })
-export class EquipmentModule { }
+export class EquipmentModule {}

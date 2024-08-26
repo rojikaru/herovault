@@ -14,6 +14,7 @@ export default function (
     playground: isNotProduction,
     autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
     sortSchema: true,
+    context: ({ req }) => ({ req }),
     formatError: (error) => {
       return isNotProduction
         ? error

@@ -19,8 +19,8 @@ import { Hero, HeroSchema } from 'src/models/schema/hero.schema';
       },
       {
         name: Equipment.name,
-        schema: EquipmentSchema
-      }
+        schema: EquipmentSchema,
+      },
     ]),
   ],
   providers: [HeroResolver, HeroService],

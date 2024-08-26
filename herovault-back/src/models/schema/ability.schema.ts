@@ -22,7 +22,7 @@ export class Ability extends Document {
   @Prop({ required: true })
   updatedAt: Date;
 
-  @Prop({ 
+  @Prop({
     type: [{ type: Types.ObjectId, ref: 'Hero' }],
   })
   heroes: Hero[];

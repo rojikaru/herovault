@@ -14,7 +14,7 @@ import { User, UserSchema } from '../models/schema/user.schema';
     ]),
   ],
   providers: [
-    // UserResolver, 
+    // UserResolver,
     UserService,
   ],
 })

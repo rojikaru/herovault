@@ -11,7 +11,7 @@ export class UserService {
   constructor(
     @InjectModel(User.name)
     private readonly userModel: Model<User>,
-  ) { }
+  ) {}
 
   async create(createUserInput: CreateUserInput) {
     return await this.userModel.create({
@@ -31,9 +31,10 @@ export class UserService {
     return await this.userModel.findById(id).exec();
   }
 
-  async findOrCreate(createUserInput: CreateUserInput) { 
-    const user = await this.findByEmail(createUserInput.email)
-      ?? await this.findByUsername(createUserInput.username);
+  async findOrCreate(createUserInput: CreateUserInput) {
+    const user =
+      (await this.findByEmail(createUserInput.email)) ??
+      (await this.findByUsername(createUserInput.username));
     if (user) {
       return user;
     }
@@ -49,14 +50,16 @@ export class UserService {
   }
 
   async update(id: string, updateUserInput: UpdateUserInput) {
-    return await this.userModel.findByIdAndUpdate(
-      id,
-      {
-        ...updateUserInput,
-        updatedAt: new Date().toUTCString(),
-      },
-      { new: true }
-    ).exec();
+    return await this.userModel
+      .findByIdAndUpdate(
+        id,
+        {
+          ...updateUserInput,
+          updatedAt: new Date().toUTCString(),
+        },
+        { new: true },
+      )
+      .exec();
   }
 
   async remove(id: string) {

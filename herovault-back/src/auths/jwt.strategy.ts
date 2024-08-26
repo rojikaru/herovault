@@ -17,7 +17,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
         cache: true,
         rateLimit: true,
         jwksRequestsPerMinute: 5,
-        jwksUri: `${issuer}.well-known/jwks.json`,
+        jwksUri: `${issuer}.well-known/jwks.json`
       }),
 
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
