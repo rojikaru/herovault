@@ -8,7 +8,6 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { authHttpInterceptorFn, provideAuth0 } from '@auth0/auth0-angular';
 import { environment } from '../../environments/environment';
 
-// TODO: Add interceptor for Auth0 to add Authorization header to API requests
 // https://manage.auth0.com/dashboard/eu/dev-8xvrpqdiv8s2tdvo/applications/Ve28XLHczhK53ZDHnSoNamd3hmBzXAxZ/quickstart
 
 export const appConfig: ApplicationConfig = {
@@ -29,7 +28,19 @@ export const appConfig: ApplicationConfig = {
       clientId: environment.auth0_client_id,
       authorizationParams: {
         redirect_uri: environment.origin,
-      }
+      },
+      httpInterceptor: {
+        allowedList: [
+          {
+            uri: environment.audience,
+            tokenOptions: {
+              authorizationParams: {
+                audience: environment.audience,
+              }
+            },
+          },
+        ],
+      },
     }),
   ]
 }
