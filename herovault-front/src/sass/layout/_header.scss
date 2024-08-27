@@ -1,3 +1,8 @@
 header {
     background: var(--mat-toolbar-container-background-color, var(--mat-app-surface));
+
+    .headline,
+    h1.headline {
+        font-weight: 700;
+    }
 }

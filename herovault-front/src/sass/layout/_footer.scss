@@ -1,5 +1,10 @@
-.footer {
+footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: $spacing-large; 
+
+    background-color: mat.get-theme-color($theme, 'primary', 100);
+    color: mat.get-theme-color($theme, 'primary', 0);
+    text-align: center;
 }

@@ -1,0 +1,27 @@
+$theme: mat.define-theme((
+    color: (
+        theme-type: dark,
+        primary: mat.$cyan-palette,
+        tertiary: mat.$orange-palette,
+    ),
+    typography: (
+        plain-family: $font-base,
+        brand-family: $font-heading,
+        bold-weight: 700
+    ),
+  density: (
+    scale: -1
+  )
+));
+
+html {
+    @include mat.all-component-themes($theme);
+}
+
+.primary-button {
+    @include mat.button-color($theme, $color-variant: primary);
+}
+
+.tertiary-button {
+    @include mat.button-color($theme, $color-variant: tertiary);
+}

@@ -2,11 +2,17 @@
 
 @charset 'utf-8';
 
+@use '@angular/material' as mat;
+@include mat.core();
+
 @import 
     'abstracts/variables',
     'abstracts/mixins',
     'abstracts/functions',
     'abstracts/placeholders';
+
+@import
+    'themes/default';   
 
 @import
     'base/typography',
@@ -18,7 +24,8 @@
     'layout/grid';
 
 @import
-    'pages/not_found';
+    'pages/not_found',
+    'pages/home';
 
 @import
     'components/hero_card';
