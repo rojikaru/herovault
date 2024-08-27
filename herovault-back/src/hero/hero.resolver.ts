@@ -15,7 +15,7 @@ import { UpdateHeroInput } from './dto/update-hero.input';
 import { PaginationArgs } from 'src/models/dto/pagination.args';
 import { EquipmentType } from 'src/equipment/entities/equipment.entity';
 import { AbilityType } from 'src/ability/entities/ability.entity';
-import { Request, UseGuards } from '@nestjs/common';
+import { UseGuards } from '@nestjs/common';
 import { GqlAuthGuard } from 'src/auths/gql-auth.guard';
 import { Permissions } from 'src/auths/permissions.decorator';
 

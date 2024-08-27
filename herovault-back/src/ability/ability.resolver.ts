@@ -5,7 +5,6 @@ import { UpdateAbilityInput } from './dto/update-ability.input';
 import { AbilityType } from './entities/ability.entity';
 import { PaginationArgs } from 'src/models/dto/pagination.args';
 import { UseGuards } from '@nestjs/common';
-import { AuthGuard } from '@nestjs/passport';
 import { Permissions } from 'src/auths/permissions.decorator';
 import { GqlAuthGuard } from 'src/auths/gql-auth.guard';
 

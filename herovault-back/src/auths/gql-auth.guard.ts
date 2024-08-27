@@ -9,7 +9,11 @@ export class GqlAuthGuard extends AuthGuard('jwt') {
     return ctx.getContext().req;
   }
 
-  handleRequest(...args: Parameters<InstanceType<ReturnType<typeof AuthGuard>>['handleRequest']>) {
+  handleRequest(
+    ...args: Parameters<
+      InstanceType<ReturnType<typeof AuthGuard>>['handleRequest']
+    >
+  ) {
     console.log(args);
     return super.handleRequest(...args);
   }

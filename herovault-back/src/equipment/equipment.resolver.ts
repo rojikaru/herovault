@@ -1,4 +1,4 @@
-import { Resolver, Query, Mutation, Args, Int, ID } from '@nestjs/graphql';
+import { Resolver, Query, Mutation, Args, ID } from '@nestjs/graphql';
 import { EquipmentService } from './equipment.service';
 import { CreateEquipmentInput } from './dto/create-equipment.input';
 import { UpdateEquipmentInput } from './dto/update-equipment.input';
@@ -10,7 +10,7 @@ import { Permissions } from 'src/auths/permissions.decorator';
 
 @Resolver(() => EquipmentType)
 export class EquipmentResolver {
-  constructor(private readonly equipmentService: EquipmentService) { }
+  constructor(private readonly equipmentService: EquipmentService) {}
 
   @Mutation(() => EquipmentType)
   @UseGuards(GqlAuthGuard)
