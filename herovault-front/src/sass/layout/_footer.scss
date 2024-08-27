@@ -2,9 +2,14 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: $spacing-large; 
+    padding-top: $spacing-small; 
+    padding-bottom: $spacing-small; 
 
-    background-color: mat.get-theme-color($theme, 'primary', 100);
-    color: mat.get-theme-color($theme, 'primary', 0);
+    background-color: mat.get-theme-color($theme, 'primary', 10);
+    color: mat.get-theme-color($theme, 'primary', 100);
     text-align: center;
+
+    .copyright {
+        margin-left: $spacing-small;
+    }
 }

@@ -1,0 +1,47 @@
+<div class="landing-header">
+    <h2>AI-Driven Hero Creation at Your Fingertips</h2>
+    <p>
+        Discover amazing library of heroes, 
+        create your own ones and boost your creativity 
+        with built-in generative AI features
+    </p>
+
+    @if (auth.isAuthenticated$ | async) {
+    <a mat-raised-button [routerLink]="['/explore']" class="tertiary-button">
+        Explore heroes
+    </a>
+    <a mat-raised-button [routerLink]="['/create']" class="tertiary-button">
+        <mat-icon>add_circle</mat-icon>
+        <span>Create</span>
+    </a>
+    <a mat-raised-button [routerLink]="['/imagine']" class="tertiary-button">
+        <mat-icon>draw</mat-icon>
+        <span>Imagine</span>
+    </a>
+    } @else {
+    <button mat-raised-button class="tertiary-button">Get Started</button>
+    }
+</div>
+
+<div class="features">
+    <h2>Our Features</h2>
+    <div class="feature-grid">
+        @for(feature of features; track feature.title) {
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>{{ feature.title }}</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <p>{{ feature.description }}</p>
+            </mat-card-content>
+        </mat-card>
+        }
+    </div>
+</div>
+
+<div class="cta">
+    <h2>Ready to dive in?</h2>
+    <a mat-raised-button [routerLink]="['/explore']" class="tertiary-button light">
+        Explore
+    </a>
+</div>

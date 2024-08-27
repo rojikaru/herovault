@@ -27,4 +27,10 @@
       @content;
     }
   }
+
+  @if $breakpoint == 2xl {
+    @media (min-width: $breakpoint-2xl) {
+      @content;
+    }
+  }
 }

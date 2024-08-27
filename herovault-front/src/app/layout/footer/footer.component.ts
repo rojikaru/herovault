@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-footer',
@@ -8,6 +9,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
   imports: [
     MatToolbarModule,
     MatButtonModule,
+    RouterModule,
   ],
   templateUrl: './footer.component.html',
 })
