@@ -1,31 +1,41 @@
 // https://sass-guidelin.es/#the-7-1-pattern
 
+// Recommended character encoding
 @charset 'utf-8';
 
+// Angular Material
 @use '@angular/material' as mat;
 @include mat.core();
 
+// Import global variables, functions, mixins and placeholders
 @import 
     'abstracts/variables',
     'abstracts/mixins',
     'abstracts/functions',
     'abstracts/placeholders';
 
+// Import theming
 @import
     'themes/default';   
 
+// Import global styles (e.g. resets, typography, etc.)
 @import
     'base/typography',
     'base/reset';
 
+// Import layout styles
 @import
     'layout/header',
     'layout/footer',
     'layout/grid';
 
+// Import pages styles
 @import
+    'pages/explore',
     'pages/not_found',
     'pages/home';
 
+// Import components styles
 @import
+    'components/auth_button',
     'components/hero_card';

@@ -1,14 +1,13 @@
-import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
+import { Subscription } from 'rxjs';
 
 interface Feature {
   title: string;
-
   description: string;
 }
 
@@ -19,13 +18,13 @@ interface Feature {
     MatCardModule,
     MatButtonModule,
     MatIconModule,
-    CommonModule,
     RouterModule,
   ],
   templateUrl: './home.component.html',
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit, OnDestroy {
   public isAuthenticated = false;
+  private authSubscription?: Subscription;
 
   public features: Feature[] = [
     {
@@ -64,9 +63,19 @@ export class HomeComponent {
     },
   ];
 
-  constructor(
-    public auth: AuthService,
-  ) {
-    this.auth.isAuthenticated$.subscribe(newAuthStatus => this.isAuthenticated = newAuthStatus);
+  constructor(private auth: AuthService) { }
+
+  login(): void {
+    this.auth.loginWithRedirect();
+  }
+
+  ngOnInit(): void {
+    this.authSubscription = this.auth
+      .isAuthenticated$
+      .subscribe(isAuthed => this.isAuthenticated = isAuthed);
+  }
+
+  ngOnDestroy(): void {
+    this.authSubscription?.unsubscribe();
   }
 }

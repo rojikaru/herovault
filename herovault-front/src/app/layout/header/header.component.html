@@ -1,17 +1,18 @@
 <header class="container">
     <mat-toolbar>
-        <!-- <button mat-icon-button class="icon">
+        <!-- <button mat-icon-button>
             <mat-icon>menu</mat-icon>
         </button> -->
         <h1 class="headline">
             <a class="reset" [routerLink]="['/']">Herovault</a>
         </h1>
         <span class="spacer"></span>
-        <a [routerLink]="['/favorites']" mat-icon-button class="icon">
-            <mat-icon>favorite</mat-icon>
-        </a>
-        <a [routerLink]="['/search']" mat-icon-button class="icon">
+        <!-- TODO: Maybe change to a button that triggers searchbar nav -->
+        <a [routerLink]="['/search']" mat-icon-button>
             <mat-icon>search</mat-icon>
+        </a>
+        <a [routerLink]="['/favorites']" mat-icon-button>
+            <mat-icon>favorite</mat-icon>
         </a>
         <app-auth-button></app-auth-button>
     </mat-toolbar>

@@ -1,7 +1,9 @@
-@if (!(auth.isLoading$ | async)) {
-    @if (auth.isAuthenticated$ | async) {
-        <button mat-button (click)="logout()">
+@if (!isLoading) {
+    @if (isAuthenticated) {
+        <a mat-icon-button [routerLink]="personalPage">
             <mat-icon>account_circle</mat-icon>
+        </a>
+        <button mat-button (click)="logout()">
             <span>Logout</span>
         </button>
     } @else {

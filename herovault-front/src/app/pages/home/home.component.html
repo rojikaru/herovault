@@ -6,7 +6,7 @@
         with built-in generative AI features
     </p>
 
-    @if (auth.isAuthenticated$ | async) {
+    @if (isAuthenticated) {
     <a mat-raised-button [routerLink]="['/explore']" class="tertiary-button">
         Explore heroes
     </a>
@@ -19,7 +19,7 @@
         <span>Imagine</span>
     </a>
     } @else {
-    <button mat-raised-button class="tertiary-button">Get Started</button>
+    <button (click)="login()" mat-raised-button class="tertiary-button">Get Started</button>
     }
 </div>
 

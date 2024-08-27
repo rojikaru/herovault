@@ -33,7 +33,7 @@ export const routes: Routes = [
         pathMatch: 'full',
     },
     {
-        path: 'heroes/:id',
+        path: 'hero/:id',
         component: SingleViewComponent,
     },
     {
@@ -41,7 +41,7 @@ export const routes: Routes = [
         component: CreateComponent,
     },
     {
-        path: 'heroes/update/:id',
+        path: 'hero/update/:id',
         component: UpdateComponent,
     },
 
