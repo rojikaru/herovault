@@ -5,8 +5,8 @@ footer {
     padding-top: $spacing-small; 
     padding-bottom: $spacing-small; 
 
-    background-color: mat.get-theme-color($theme, 'primary', 10);
-    color: mat.get-theme-color($theme, 'primary', 100);
+    background-color: mat.get-theme-color($theme, 'primary', 100);
+    color: mat.get-theme-color($theme, 'primary', 0);
     text-align: center;
 
     .copyright {

@@ -3,10 +3,10 @@ import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { provideClientHydration } from '@angular/platform-browser';
 import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
-import { graphqlProvider } from '../graphql.provider';
+import { graphqlProvider } from './graphql.provider';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { authHttpInterceptorFn, provideAuth0 } from '@auth0/auth0-angular';
-import { environment } from '../../environments/environment';
+import { environment } from '../environments/environment';
 
 // https://manage.auth0.com/dashboard/eu/dev-8xvrpqdiv8s2tdvo/applications/Ve28XLHczhK53ZDHnSoNamd3hmBzXAxZ/quickstart
 
