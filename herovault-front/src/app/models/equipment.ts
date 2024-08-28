@@ -9,3 +9,5 @@ export declare class Equipment {
     createdAt: Date;
     updatedAt: Date;
 }
+
+export type PartialEquipment = Partial<Equipment>

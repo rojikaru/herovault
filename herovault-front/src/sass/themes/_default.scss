@@ -9,9 +9,9 @@ $theme: mat.define-theme((
         brand-family: $font-heading,
         bold-weight: 700
     ),
-  density: (
-    scale: -1
-  )
+    density: (
+        scale: -1
+    )
 ));
 
 html {
@@ -27,7 +27,8 @@ html {
 }
 
 .alert {
-    color: rgb(215, 30, 30);
+    color: rgb(244, 67, 54);
     font-weight: 700;
     font-size: $text-heading;
+    padding: 15px;
 }

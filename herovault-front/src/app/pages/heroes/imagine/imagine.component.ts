@@ -5,7 +5,6 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './imagine.component.html',
-  styleUrl: './imagine.component.scss'
 })
 export class ImagineComponent {
 

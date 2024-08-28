@@ -2,14 +2,26 @@ app-explore {
     display: block;
     min-height: 100vh;
 
-    .alert, .hero-list {
+    .alert,
+    .hero-list {
         margin: $spacing-large 0;
     }
 
-    .spinner-container {
-        display: flex;
-        min-height: 100vh;
-        justify-content: center;
-        align-items: center;
+    .leading-section {
+        margin: 3rem 0;
+        text-align: center;
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        p {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
     }
 }

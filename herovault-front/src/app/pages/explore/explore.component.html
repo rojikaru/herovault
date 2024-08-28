@@ -3,8 +3,13 @@
     <mat-spinner [diameter]="50"></mat-spinner>
 </div>
 } @else if (!!heroes) {
-<app-hero-list [heroes]="heroes"></app-hero-list>
-<!-- <app-hero-card [hero]="heroes[0]"></app-hero-card> -->
+<section class="leading-section">
+    <h2>Explore Heroes</h2>
+    <p>Discover amazing heroes from various universes and learn about their extraordinary abilities!</p>
+</section>
+<section>
+    <app-hero-list [heroes]="heroes"></app-hero-list>
+</section>
 } @else {
 <div class="alert text-center" role="alert">
     A server error occurred. Please try again later.

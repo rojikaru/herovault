@@ -62,7 +62,7 @@ export class RequestService {
     }))
 
     if (errors || error) {
-      throw errors || [error]
+      throw errors || error
     }
 
     if (!data) {

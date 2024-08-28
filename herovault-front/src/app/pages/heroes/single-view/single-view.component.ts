@@ -5,7 +5,6 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './single-view.component.html',
-  styleUrl: './single-view.component.scss'
 })
 export class SingleViewComponent {
 

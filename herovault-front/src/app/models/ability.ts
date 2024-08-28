@@ -7,3 +7,5 @@ export declare class Ability {
     createdAt: Date;
     updatedAt: Date;
 }
+
+export type PartialAbility = Partial<Ability>

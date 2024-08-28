@@ -1,5 +1,6 @@
-import { Ability } from "./ability";
-import { Equipment } from "./equipment";
+import { Ability, PartialAbility } from "./ability";
+import { Equipment, PartialEquipment } from "./equipment";
+import { PartialUser, User } from "./user";
 
 export declare class Hero {
     id: string;
@@ -21,8 +22,18 @@ export declare class Hero {
     };
     equipment: Equipment[];
     remarks: string[];
-    user: string;
+    user: User;
     isAiGenerated: boolean;
     createdAt: Date;
     updatedAt: Date;
 }
+
+type __HeroComplexTypes = 'powerstats' | 'equipment' | 'abilities' | 'user'
+type __PartialHeroComplexTypes = {
+    powerstats?: Partial<Hero['powerstats']>;
+    equipment?: PartialEquipment[];
+    abilities?: PartialAbility[];
+    user: PartialUser;
+}
+export type PartialHero = Omit<Partial<Hero>, __HeroComplexTypes>
+    & __PartialHeroComplexTypes
