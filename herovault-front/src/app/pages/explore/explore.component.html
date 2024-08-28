@@ -1,1 +1,12 @@
-<p>explore works!</p>
+@if(loading) {
+<div class="spinner-container">
+    <mat-spinner [diameter]="50"></mat-spinner>
+</div>
+} @else if (!!heroes) {
+<app-hero-list [heroes]="heroes"></app-hero-list>
+<!-- <app-hero-card [hero]="heroes[0]"></app-hero-card> -->
+} @else {
+<div class="alert text-center" role="alert">
+    A server error occurred. Please try again later.
+</div>
+}

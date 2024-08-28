@@ -1,0 +1,9 @@
+.hero-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 3rem 1rem;
+
+    @include respond-to('lg') {
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    }
+}

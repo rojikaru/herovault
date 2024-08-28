@@ -1,22 +1,14 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Hero } from '../../models/hero';
+import { Component, Input } from '@angular/core';
 import { HeroCardComponent } from '../hero-card/hero-card.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { PartialHero } from '../../models/hero';
 
 @Component({
   selector: 'app-hero-list',
   standalone: true,
-  imports: [HeroCardComponent],
+  imports: [HeroCardComponent, MatGridListModule],
   templateUrl: './hero-list.component.html',
 })
-export class HeroListComponent implements OnInit {
-  @Input() heroes: Hero[] = [];
-  breakpoint: number = 6;
-
-  ngOnInit() {
-    this.breakpoint = (window.innerWidth <= 400) ? 1 : 6;
-  }
-
-  onResize(event: { target: { innerWidth: number } }) {
-    this.breakpoint = (event.target.innerWidth <= 400) ? 1 : 6;
-  }
+export class HeroListComponent {
+  @Input() heroes!: PartialHero[];
 }

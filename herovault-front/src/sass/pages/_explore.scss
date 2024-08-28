@@ -1,0 +1,15 @@
+app-explore {
+    display: block;
+    min-height: 100vh;
+
+    .alert, .hero-list {
+        margin: $spacing-large 0;
+    }
+
+    .spinner-container {
+        display: flex;
+        min-height: 100vh;
+        justify-content: center;
+        align-items: center;
+    }
+}

@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { Hero } from '../../models/hero';
+import { PartialHero } from '../../models/hero';
 
 @Component({
   selector: 'app-hero-card',
@@ -10,5 +10,5 @@ import { Hero } from '../../models/hero';
   templateUrl: './hero-card.component.html',
 })
 export class HeroCardComponent {
-  @Input() hero!: Hero;
+  @Input() hero!: PartialHero;
 }

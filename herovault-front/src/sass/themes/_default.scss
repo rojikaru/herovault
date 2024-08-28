@@ -25,3 +25,9 @@ html {
 .tertiary-button {
     @include mat.button-color($theme, $color-variant: tertiary);
 }
+
+.alert {
+    color: rgb(215, 30, 30);
+    font-weight: 700;
+    font-size: $text-heading;
+}
