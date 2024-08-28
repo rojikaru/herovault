@@ -1,4 +1,4 @@
-import { Injectable, Logger } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
 import { ExtractJwt, Strategy } from 'passport-jwt';
 import { passportJwtSecret } from 'jwks-rsa';
@@ -7,7 +7,6 @@ import constants from 'src/constants';
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
-  private readonly logger = new Logger(JwtStrategy.name);
   constructor(configService: ConfigService) {
     const issuer = configService.getOrThrow<string>(constants.auth0_issuer);
     const audience = configService.getOrThrow<string>(constants.audience);
@@ -28,7 +27,6 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
   }
 
   validate(payload: unknown): unknown {
-    this.logger.debug(`Payload: ${payload}`);
     return payload;
   }
 }

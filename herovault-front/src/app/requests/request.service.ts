@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AuthService } from '@auth0/auth0-angular';
+import { AuthService, GetTokenSilentlyOptions, GetTokenWithPopupOptions } from '@auth0/auth0-angular';
 import { Apollo, TypedDocumentNode } from 'apollo-angular';
 import { firstValueFrom } from 'rxjs';
 import { environment } from '../../environments/environment';
@@ -23,14 +23,22 @@ export class RequestService {
    */
   private async getAccessToken(permissions: string[] | null = null): Promise<string> {
     // TODO: Implement permissions
-
-    // Get the access token with required permissions
-    return (await firstValueFrom(this.auth.getAccessTokenWithPopup({
+    const params = {
       cacheMode: 'on',
       authorizationParams: {
         audience: environment.audience,
       }
-    })))!
+    } satisfies GetTokenSilentlyOptions satisfies GetTokenWithPopupOptions
+
+    // Get the access token with required permissions
+    // TODO: Handle popup closing
+    try {
+      const token = await firstValueFrom(this.auth.getAccessTokenSilently(params))
+      return token!
+    } catch {
+      const token = await firstValueFrom(this.auth.getAccessTokenWithPopup(params))
+      return token!
+    }
   }
 
   /**
@@ -38,7 +46,7 @@ export class RequestService {
    * @param query A GraphQL query to execute
    * @param authorize Should the request include Authorization header
    * @param permissions Token permissions required to execute the query (if any)
-   * @returns 
+   * @returns A promise that resolves to the query result
    */
   async query<T>(
     query: TypedDocumentNode<unknown, unknown>,
@@ -74,10 +82,10 @@ export class RequestService {
 
   /**
    * A generic GraphQL API mutation function
-   * @param query A GraphQL query to execute
+   * @param mutation A GraphQL mutation to execute
    * @param authorize Should the request include Authorization header
-   * @param permissions Token permissions required to execute the query (if any)
-   * @returns 
+   * @param permissions Token permissions required to execute the mutation (if any)
+   * @returns A promise that resolves to the mutation result
    */
   async mutate<T>(
     mutation: TypedDocumentNode<unknown, unknown>,

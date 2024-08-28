@@ -1,9 +1,8 @@
-import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { Prop, raw, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Types } from 'mongoose';
 import { Ability } from 'src/models/schema/ability.schema';
 import { Equipment } from 'src/models/schema/equipment.schema';
 import { User } from './user.schema';
-import { PowerstatsType } from 'src/hero/entities/powerstats.entity';
 
 @Schema()
 export class Hero extends Document {
@@ -36,11 +35,18 @@ export class Hero extends Document {
   abilities: Ability[];
 
   // as in DnD (between 1 and 20)
-  @Prop({
-    required: true,
-    type: PowerstatsType,
-  })
-  powerstats: PowerstatsType;
+  @Prop(raw({
+    strength: { type: Number },
+    dexterity: { type: Number },
+    constitution: { type: Number },
+    intelligence: { type: Number },
+    wisdom: { type: Number },
+    charisma: { type: Number },
+  }))
+  powerstats: Record<
+    'strength' | 'dexterity' | 'constitution' | 'intelligence' | 'wisdom' | 'charisma',
+    number
+  >;
 
   @Prop({
     required: false,

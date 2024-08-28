@@ -14,7 +14,7 @@ export class GqlAuthGuard extends AuthGuard('jwt') {
       InstanceType<ReturnType<typeof AuthGuard>>['handleRequest']
     >
   ) {
-    console.log(args);
+    // console.log(args);
     return super.handleRequest(...args);
   }
 }
