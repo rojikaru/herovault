@@ -6,6 +6,7 @@ import { CreateComponent } from './pages/heroes/create/create.component';
 import { UpdateComponent } from './pages/heroes/update/update.component';
 import { ImagineComponent } from './pages/heroes/imagine/imagine.component';
 import { SingleViewComponent } from './pages/heroes/single-view/single-view.component';
+import { AuthGuard } from '@auth0/auth0-angular';
 
 export const routes: Routes = [
     // Home
@@ -18,12 +19,14 @@ export const routes: Routes = [
     {
         path: 'explore',
         component: ExploreComponent,
+        canActivate: [AuthGuard],
     },
 
     // AI-Driven Character Creation
     {
         path: 'imagine',
         component: ImagineComponent,
+        canActivate: [AuthGuard],
     },
 
     // Heroes
@@ -39,10 +42,12 @@ export const routes: Routes = [
     {
         path: 'heroes/create',
         component: CreateComponent,
+        canActivate: [AuthGuard],
     },
     {
         path: 'hero/update/:id',
         component: UpdateComponent,
+        canActivate: [AuthGuard],
     },
 
     // User Profiles
