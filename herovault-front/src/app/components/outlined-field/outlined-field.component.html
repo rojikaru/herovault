@@ -1,0 +1,11 @@
+<mat-form-field appearance="outline">
+    <mat-label>{{label}}</mat-label>
+    <input matInput [placeholder]="placeholder" [required]="required" [formControl]="field" [disabled]="disabled"
+        [type]="type" (focus)="updateErrorMessage()" (blur)="updateErrorMessage()" />
+    @if (icon) {
+    <mat-icon matSuffix [fontIcon]="icon"></mat-icon>
+    }
+    @if (field.invalid) {
+    <mat-error>{{errorMessage()}}</mat-error>
+    }
+</mat-form-field>
