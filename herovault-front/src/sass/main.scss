@@ -33,10 +33,12 @@
 @import
     'pages/explore',
     'pages/not_found',
+    'pages/create_update_hero',
     'pages/home';
 
 // Import components styles
 @import
     'components/auth_button',
     'components/hero_card',
+    'components/hero_form',
     'components/hero_list';

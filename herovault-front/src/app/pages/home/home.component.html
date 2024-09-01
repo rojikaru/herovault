@@ -8,7 +8,8 @@
 
     @if (isAuthenticated) {
     <a mat-raised-button [routerLink]="['/explore']" class="tertiary-button">
-        Explore heroes
+        <mat-icon>star</mat-icon>
+        Heroes
     </a>
     <a mat-raised-button [routerLink]="['/heroes/create']" class="tertiary-button">
         <mat-icon>add_circle</mat-icon>

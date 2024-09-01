@@ -1,0 +1,40 @@
+<form class="hero-form" [formGroup]="heroForm" (ngSubmit)="onSubmit(heroForm)">
+    <app-outlined-field [label]="'Name'" [placeholder]="'Enter hero name'" [required]="true" [field]="control('name')"
+        [type]="'text'" [icon]="'person'">
+    </app-outlined-field>
+    <app-outlined-field [label]="'Description'" [placeholder]="'Enter hero description'" [required]="true"
+        [field]="control('description')" [type]="'text'" [icon]="'description'">
+    </app-outlined-field>
+    <!-- <app-outlined-field [label]="'Image URL'" [placeholder]="'Enter hero image URL'" [required]="true"
+        [field]="array('images')" [type]="'text'" [icon]="'image'">
+    </app-outlined-field> -->
+    <app-outlined-select [label]="'Race'" [options]="races" [field]="control('race')" [required]="true">
+    </app-outlined-select>
+    <app-outlined-select [label]="'Alignment'" [options]="alignments" [field]="control('alignment')" [required]="true">
+    </app-outlined-select>
+
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>Power Stats</mat-panel-title>
+        </mat-expansion-panel-header>
+        <app-outlined-field [label]="'Strength'" [placeholder]="'Enter hero strength'" [required]="true"
+            [field]="control('powerstats.strength')" [type]="'number'" [icon]="'emoji_objects'">
+        </app-outlined-field>
+        <app-outlined-field [label]="'Dexterity'" [placeholder]="'Enter hero dexterity'" [required]="true"
+            [field]="control('powerstats.dexterity')" [type]="'number'" [icon]="'emoji_objects'">
+        </app-outlined-field>
+        <app-outlined-field [label]="'Constitution'" [placeholder]="'Enter hero constitution'" [required]="true"
+            [field]="control('powerstats.constitution')" [type]="'number'" [icon]="'emoji_objects'">
+        </app-outlined-field>
+        <app-outlined-field [label]="'Intelligence'" [placeholder]="'Enter hero intelligence'" [required]="true"
+            [field]="control('powerstats.intelligence')" [type]="'number'" [icon]="'emoji_objects'">
+        </app-outlined-field>
+        <app-outlined-field [label]="'Wisdom'" [placeholder]="'Enter hero wisdom'" [required]="true"
+            [field]="control('powerstats.wisdom')" [type]="'number'" [icon]="'emoji_objects'">
+        </app-outlined-field>
+        <app-outlined-field [label]="'Charisma'" [placeholder]="'Enter hero charisma'" [required]="true"
+            [field]="control('powerstats.charisma')" [type]="'number'" [icon]="'emoji_objects'">
+        </app-outlined-field>
+    </mat-expansion-panel>
+    <button mat-raised-button color="primary" type="submit" [disabled]="!heroForm.valid">{{submitText}}</button>
+</form>

@@ -10,7 +10,7 @@ export declare class Hero {
     race: string;
     alignment: string;
     class: string[];
-    background?: string;
+    background?: string | null;
     abilities: Ability[];
     powerstats: {
         strength: number;
@@ -28,12 +28,37 @@ export declare class Hero {
     updatedAt: Date;
 }
 
-type __HeroComplexTypes = 'powerstats' | 'equipment' | 'abilities' | 'user'
-type __PartialHeroComplexTypes = {
+export type PartialHero = Omit<
+    Partial<Hero>,
+    'powerstats' | 'equipment' | 'abilities' | 'user'
+> & {
     powerstats?: Partial<Hero['powerstats']>;
     equipment?: PartialEquipment[];
     abilities?: PartialAbility[];
     user: PartialUser;
 }
-export type PartialHero = Omit<Partial<Hero>, __HeroComplexTypes>
-    & __PartialHeroComplexTypes
+
+export type ChangeHero = Omit<
+    Hero,
+    'id' | 'user' | 'isAiGenerated' | 'createdAt' | 'updatedAt'
+>
+export const defaultHeroChangeInitValues: ChangeHero = {
+    name: '',
+    description: '',
+    images: [],
+    race: '',
+    alignment: '',
+    class: [],
+    background: null,
+    abilities: [],
+    powerstats: {
+        strength: 0,
+        dexterity: 0,
+        constitution: 0,
+        intelligence: 0,
+        wisdom: 0,
+        charisma: 0,
+    },
+    equipment: [],
+    remarks: [],
+}
