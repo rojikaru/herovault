@@ -1,12 +1,26 @@
 <mat-form-field appearance="outline">
     <mat-label>{{label}}</mat-label>
-    <mat-chip-list #chipList>
-        @for (it in items.controls; track $index; let i = index) {
-        <mat-chip [selectable]="true" [removable]="true" (removed)="items.removeAt(i)">
-            {{ it.value }}
-            <mat-icon matChipRemove>cancel</mat-icon>
-        </mat-chip>
+    <mat-chip-grid #chipGrid>
+        @for (it of items.controls; track $index; let i = $index) {
+          <mat-chip-row
+            (removed)="removeItem(i)"
+            [editable]="true"
+            (edited)="editItem(i, $event)"
+            [aria-description]="'Press enter to edit ' + it.value"
+          >
+            {{it.value}}
+            <button matChipRemove [attr.aria-label]="'Remove ' + it.value">
+              <mat-icon>cancel</mat-icon>
+            </button>
+          </mat-chip-row>
         }
-        <input [matChipInputFor]="reactiveChipGrid" (matChipInputTokenEnd)="addClass($event)">
-    </mat-chip-list>
+        <!-- TODO: Add hinting -->
+        <input
+          [placeholder]="placeholder"
+          [matChipInputFor]="chipGrid"
+          [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+          [matChipInputAddOnBlur]="addOnBlur"
+          (matChipInputTokenEnd)="addItem($event)"
+        />
+      </mat-chip-grid>
 </mat-form-field>

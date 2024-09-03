@@ -1,0 +1,14 @@
+@for (item of items.controls; track $index; let i = $index) {
+    <div class="multiline-item">
+        <app-outlined-field [label]="label" [placeholder]="placeholder" [field]="control(item)" [icon]="icon">
+        </app-outlined-field>
+        <!-- TODO: Add delete button -->
+         <button mat-icon-button (click)="removeItem(i)">
+            <mat-icon>delete</mat-icon>
+        </button>
+    </div>
+}
+<button mat-button class="tertiary-button" (click)="addItem()">
+    <mat-icon>add</mat-icon>
+    {{ btnHint }}
+</button>
