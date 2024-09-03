@@ -9,15 +9,24 @@
         margin: 0 auto;
     }
 
-    button {
+    button[type='submit'] {
         margin: 1.5rem auto 0;
     }
 
     >app-outlined-field,
     >app-outlined-select,
+    >app-outlined-multiline-field,
+    >app-outlined-chiplist {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
     mat-form-field,
     mat-select {
         width: 100%;
+    }
+
+    mat-expansion-panel {
+        margin-bottom: 2rem;
     }
 
     .mat-expansion-panel-body {

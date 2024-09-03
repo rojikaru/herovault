@@ -1,40 +1,64 @@
 <form class="hero-form" [formGroup]="heroForm" (ngSubmit)="onSubmit(heroForm)">
-    <app-outlined-field [label]="'Name'" [placeholder]="'Enter hero name'" [required]="true" [field]="control('name')"
-        [type]="'text'" [icon]="'person'">
+    <app-outlined-field label="Name" placeholder="Enter hero name" [field]="control('name')" icon="person">
     </app-outlined-field>
-    <app-outlined-field [label]="'Description'" [placeholder]="'Enter hero description'" [required]="true"
-        [field]="control('description')" [type]="'text'" [icon]="'description'">
+
+    <app-outlined-field label="Description" placeholder="Enter hero description"
+        [field]="control('description')" icon="description">
     </app-outlined-field>
-    <!-- <app-outlined-field [label]="'Image URL'" [placeholder]="'Enter hero image URL'" [required]="true"
-        [field]="array('images')" [type]="'text'" [icon]="'image'">
-    </app-outlined-field> -->
-    <app-outlined-select [label]="'Race'" [options]="races" [field]="control('race')" [required]="true">
+
+    <app-outlined-multiline-field label="Picture URL" placeholder="Enter a picture URL"
+        [items]="array('images')" btnHint="Add picture" icon="image">
+    </app-outlined-multiline-field>
+
+    <app-outlined-select label="Race" [options]="races" [field]="control('race')">
     </app-outlined-select>
-    <app-outlined-select [label]="'Alignment'" [options]="alignments" [field]="control('alignment')" [required]="true">
+
+    <app-outlined-select label="Alignment" [options]="alignments" [field]="control('alignment')">
     </app-outlined-select>
+
+    <app-outlined-chiplist label="Classes" placeholder="Enter hero classes..." [items]="array('classes')"
+        btnHint="Add class" icon="group">
+    </app-outlined-chiplist>
+
+    <app-outlined-field label="Background" placeholder="Enter hero background"
+        [field]="control('background')" icon="history_edu">
+    </app-outlined-field>
+
+    <app-outlined-multiline-field label="Abilities" placeholder="Enter hero abilities..."
+        [items]="array('abilities')" btnHint="Add ability" icon="power">
+    </app-outlined-multiline-field>
 
     <mat-expansion-panel>
         <mat-expansion-panel-header>
             <mat-panel-title>Power Stats</mat-panel-title>
         </mat-expansion-panel-header>
-        <app-outlined-field [label]="'Strength'" [placeholder]="'Enter hero strength'" [required]="true"
-            [field]="control('powerstats.strength')" [type]="'number'" [icon]="'emoji_objects'">
+        <app-outlined-field label="Strength" placeholder="Enter hero strength"
+            [field]="control('powerstats.strength')" type="number">
         </app-outlined-field>
-        <app-outlined-field [label]="'Dexterity'" [placeholder]="'Enter hero dexterity'" [required]="true"
-            [field]="control('powerstats.dexterity')" [type]="'number'" [icon]="'emoji_objects'">
+        <app-outlined-field label="Dexterity" placeholder="Enter hero dexterity"
+            [field]="control('powerstats.dexterity')" type="number">
         </app-outlined-field>
-        <app-outlined-field [label]="'Constitution'" [placeholder]="'Enter hero constitution'" [required]="true"
-            [field]="control('powerstats.constitution')" [type]="'number'" [icon]="'emoji_objects'">
+        <app-outlined-field label="Constitution" placeholder="Enter hero constitution"
+            [field]="control('powerstats.constitution')" type="number">
         </app-outlined-field>
-        <app-outlined-field [label]="'Intelligence'" [placeholder]="'Enter hero intelligence'" [required]="true"
-            [field]="control('powerstats.intelligence')" [type]="'number'" [icon]="'emoji_objects'">
+        <app-outlined-field label="Intelligence" placeholder="Enter hero intelligence"
+            [field]="control('powerstats.intelligence')" type="number">
         </app-outlined-field>
-        <app-outlined-field [label]="'Wisdom'" [placeholder]="'Enter hero wisdom'" [required]="true"
-            [field]="control('powerstats.wisdom')" [type]="'number'" [icon]="'emoji_objects'">
+        <app-outlined-field label="Wisdom" placeholder="Enter hero wisdom"
+            [field]="control('powerstats.wisdom')" type="number">
         </app-outlined-field>
-        <app-outlined-field [label]="'Charisma'" [placeholder]="'Enter hero charisma'" [required]="true"
-            [field]="control('powerstats.charisma')" [type]="'number'" [icon]="'emoji_objects'">
+        <app-outlined-field label="Charisma" placeholder="Enter hero charisma"
+            [field]="control('powerstats.charisma')" type="number">
         </app-outlined-field>
     </mat-expansion-panel>
+
+    <app-outlined-chiplist label="Equipment" placeholder="Enter hero equipment..." [items]="array('equipment')"
+        btnHint="Add equipment" icon="construction">
+    </app-outlined-chiplist>
+
+    <app-outlined-multiline-field label="Notes" placeholder="Enter hero notes..." [items]="array('remarks')"
+        btnHint="Add note" icon="edit_note">
+    </app-outlined-multiline-field>
+
     <button mat-raised-button color="primary" type="submit" [disabled]="!heroForm.valid">{{submitText}}</button>
 </form>

@@ -6,9 +6,9 @@ import {
   Validators,
   FormArray,
   FormControl,
+  AbstractControl,
 } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import { MatChipInputEvent } from '@angular/material/chips';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { OutlinedFieldComponent }
@@ -19,6 +19,10 @@ import {
   defaultHeroChangeInitValues,
   ChangeHero
 } from '../../models/hero';
+import { OutlinedChiplistComponent }
+  from '../form/outlined-chiplist/outlined-chiplist.component';
+import { OutlinedMultilineFieldComponent }
+  from '../form/outlined-multiline-field/outlined-multiline-field.component';
 
 @Component({
   selector: 'app-hero-form',
@@ -26,6 +30,8 @@ import {
   imports: [
     OutlinedFieldComponent,
     OutlinedSelectComponent,
+    OutlinedChiplistComponent,
+    OutlinedMultilineFieldComponent,
     MatFormFieldModule,
     MatExpansionModule,
     ReactiveFormsModule,
@@ -131,20 +137,11 @@ export class HeroFormComponent {
     return this.heroForm.get(name) as FormArray;
   }
 
-  control(name: string): FormControl {
-    return this.heroForm.get(name) as FormControl
-  }
-
-  addImage(): void {
-    this.array('images').push(this.fb.control(''));
-  }
-
-  removeImage(index: number): void {
-    this.array('images').removeAt(index);
-  }
-
-  addClass(event: MatChipInputEvent): void {
-    const value = (event.value || '').trim();
-    this.array('classes').push(this.fb.control(value));
+  control(name: string): FormControl;
+  control(control: AbstractControl): FormControl;
+  control(input: string | AbstractControl): FormControl {
+    return (typeof input === 'string'
+      ? this.heroForm.get(input)
+      : input) as FormControl
   }
 }

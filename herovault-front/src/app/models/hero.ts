@@ -45,7 +45,7 @@ export type ChangeHero = Omit<
 export const defaultHeroChangeInitValues: ChangeHero = {
     name: '',
     description: '',
-    images: [],
+    images: [''],
     race: '',
     alignment: '',
     class: [],
