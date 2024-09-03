@@ -1,6 +1,6 @@
 <mat-form-field appearance="outline">
     <mat-label>{{label}}</mat-label>
-    <mat-chip-grid #chipGrid>
+    <mat-chip-grid #chipGrid [required]="required">
         @for (it of items.controls; track $index; let i = $index) {
           <mat-chip-row
             (removed)="removeItem(i)"

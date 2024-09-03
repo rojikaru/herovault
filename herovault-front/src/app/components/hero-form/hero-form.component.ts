@@ -72,7 +72,7 @@ export class HeroFormComponent {
   constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
-    const powerstatsValidators = [Validators.required, Validators.min(0), Validators.max(20)]
+    const powerstatsValidators = [Validators.required, Validators.min(1), Validators.max(20)]
 
     this.heroForm = this.fb.group({
       name: this.fb.control(
@@ -98,7 +98,7 @@ export class HeroFormComponent {
       ),
       class: this.fb.array(
         this.initialValues.class,
-        [Validators.required]
+        [Validators.required, Validators.minLength(1)]
       ),
       background: this.fb.control(this.initialValues.background),
       abilities: this.fb.array(this.initialValues.abilities),
@@ -143,5 +143,9 @@ export class HeroFormComponent {
     return (typeof input === 'string'
       ? this.heroForm.get(input)
       : input) as FormControl
+  }
+
+  group(name: string): FormGroup {
+    return this.heroForm.get(name) as FormGroup;
   }
 }

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { booleanAttribute, Component, Input, OnInit } from '@angular/core';
 import { FormArray, FormBuilder } from '@angular/forms';
 import { MatChipEditedEvent, MatChipInputEvent, MatChipsModule } from '@angular/material/chips';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -15,7 +15,9 @@ export class OutlinedChiplistComponent implements OnInit {
   @Input() items!: FormArray
   @Input() label!: string
   @Input() placeholder!: string
-  @Input() addOnBlur: boolean = true
+  @Input({ transform: booleanAttribute }) required: boolean = true
+  @Input({ transform: booleanAttribute }) addOnBlur: boolean = true
+
   readonly separatorKeysCodes: number[] = [ENTER, COMMA, SEMICOLON] as const
 
   constructor(

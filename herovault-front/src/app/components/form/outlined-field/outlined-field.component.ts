@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit, signal } from '@angular/core';
+import { booleanAttribute, Component, Input, OnDestroy, OnInit, signal } from '@angular/core';
 import { AbstractControl, FormControl, ValidatorFn } from '@angular/forms';
 import { merge, Subscription } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
@@ -27,7 +27,7 @@ export class OutlinedFieldComponent implements OnInit, OnDestroy {
   @Input() label!: string
   @Input() placeholder: string = ''
   @Input() type: string = 'text'
-  @Input() required: boolean = true
+  @Input({ transform: booleanAttribute }) required: boolean = true
 
   @Input() icon?: string
 

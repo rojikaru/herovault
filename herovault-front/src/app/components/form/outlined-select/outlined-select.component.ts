@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { booleanAttribute, Component, Input } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
@@ -13,9 +13,9 @@ export class OutlinedSelectComponent {
   @Input() field!: FormControl;
 
   @Input() label!: string;
-  @Input() required: boolean = true;
+  @Input({ transform: booleanAttribute }) required: boolean = true;
 
   @Input() options!: string[]
 
-  constructor() {}
+  constructor() { }
 }

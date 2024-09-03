@@ -16,16 +16,16 @@
     <app-outlined-select label="Alignment" [options]="alignments" [field]="control('alignment')">
     </app-outlined-select>
 
-    <app-outlined-chiplist label="Classes" placeholder="Enter hero classes..." [items]="array('classes')"
+    <app-outlined-chiplist label="Classes" placeholder="Enter hero classes..." [items]="array('class')"
         btnHint="Add class" icon="group">
     </app-outlined-chiplist>
 
     <app-outlined-field label="Background" placeholder="Enter hero background"
-        [field]="control('background')" icon="history_edu">
+        [field]="control('background')" icon="history_edu" [required]="false">
     </app-outlined-field>
 
     <app-outlined-multiline-field label="Abilities" placeholder="Enter hero abilities..."
-        [items]="array('abilities')" btnHint="Add ability" icon="power">
+        [items]="array('abilities')" btnHint="Add ability" icon="bolt">
     </app-outlined-multiline-field>
 
     <mat-expansion-panel>
@@ -53,12 +53,14 @@
     </mat-expansion-panel>
 
     <app-outlined-chiplist label="Equipment" placeholder="Enter hero equipment..." [items]="array('equipment')"
-        btnHint="Add equipment" icon="construction">
+        btnHint="Add equipment" icon="construction" [required]="false">
     </app-outlined-chiplist>
 
     <app-outlined-multiline-field label="Notes" placeholder="Enter hero notes..." [items]="array('remarks')"
         btnHint="Add note" icon="edit_note">
     </app-outlined-multiline-field>
 
-    <button mat-raised-button color="primary" type="submit" [disabled]="!heroForm.valid">{{submitText}}</button>
+    <button mat-raised-button color="primary" type="submit" [disabled]="!heroForm.valid && !group('powerstats').valid">
+        {{submitText}}
+    </button>
 </form>
