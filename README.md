@@ -27,11 +27,11 @@ A simple & cool app to manage, generate & share your D&D-like characters.
 
 ## Installation
 
-Follow instructions in the [frontend](herovault-frontend/README.md) and [backend](herovault-backend/README.md) READMEs.
+Follow instructions in the [frontend](herovault-front/README.md) and [backend](herovault-back/README.md) READMEs.
 
 ## Support
 
-Herovault is an open-source project. If you have any questions, please open an issue on the [GitHub repository](issues).
+Herovault is an open-source project. If you have any questions, please open an issue on the [GitHub repository](https://github.com/rojikaru/herovault/issues).
 
 ## Contributing
 

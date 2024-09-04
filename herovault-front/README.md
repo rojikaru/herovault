@@ -20,7 +20,7 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 
 ## Support
 
-Herovault is an open-source project. If you have any questions, please open an issue on the [GitHub repository](issues).
+Herovault is an open-source project. If you have any questions, please open an issue on the [GitHub repository](https://github.com/rojikaru/herovault/issues).
 
 ## Contributing
 

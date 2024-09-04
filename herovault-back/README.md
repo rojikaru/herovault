@@ -38,7 +38,7 @@ $ npm run test:cov
 
 ## Support
 
-Herovault is an open-source project. If you have any questions, please open an issue on the [GitHub repository](issues).
+Herovault is an open-source project. If you have any questions, please open an issue on the [GitHub repository](https://github.com/rojikaru/herovault/issues).
 
 ## Contributing
 
