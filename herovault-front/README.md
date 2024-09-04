@@ -1,18 +1,14 @@
-# HerovaultFront
+# Herovault client
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.0.
+This is the client side of the Herovault project. It is an Angular application that allows users to create, edit, and delete characters for tabletop roleplaying games, mostly conforming to DnD characters. The application is designed to be used in conjunction with the Herovault API, which is a GraphQL API that provides the backend functionality for the application.
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Run `ng serve` to start the development server.
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Run npm run serve to serve the built project.
 
 ## Running unit tests
 
@@ -22,6 +18,10 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
-## Further help
+## Support
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Herovault is an open-source project. If you have any questions, please open an issue on the [GitHub repository](issues).
+
+## Contributing
+
+Feel free to contribute to this project by submitting a pull request. Please make sure to follow common sense and common contributing guidelines.
