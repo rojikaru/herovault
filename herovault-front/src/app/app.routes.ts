@@ -45,7 +45,7 @@ export const routes: Routes = [
         canActivate: [AuthGuard],
     },
     {
-        path: 'hero/update/:id',
+        path: 'heroes/update/:id',
         component: UpdateHeroComponent,
         canActivate: [AuthGuard],
     },
